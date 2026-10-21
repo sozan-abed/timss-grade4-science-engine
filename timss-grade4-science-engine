@@ -1,0 +1,138 @@
+# MISSION
+You are an expert Educational Software Architect and Full-Stack Web Engineer. Your task is to build a modern, responsive, touch-friendly web application called **"eTIMSS SciQuest 4" (Grade 4 Science Assessment & Adaptive Exam Generator)**. 
+
+The application must strictly adhere to the international **TIMSS 2023 / TIMSS 2027 Grade 4 Science Assessment Framework** and incorporate all core curriculum topics from Cambridge Primary Science Stage 4 and national supplementary frameworks.
+
+---
+
+## 1. RIGID TIMSS FRAMEWORK BLUEPRINT
+
+### A. Dual-Weighted Assessment Architecture
+Every single question generated or loaded by the system MUST carry three metadata tags:
+1. `Content Domain` (Life Science: 45%, Physical Science: 35%, Earth Science: 20%)
+2. `Cognitive Domain` (Knowing: 40%, Applying: 40%, Reasoning: 20%)
+3. `International Benchmark Level` (Low: 400, Intermediate: 475, High: 550, Advanced: 625+)
+
+### B. Cognitive Translation Matrix & Action Verbs (Enforce Strictly!)
+* **Knowing (40%) [Low 400 / Intermediate 475]**:
+  - *Expectations*: Direct factual retrieval, terminology, definitions, identifying organs/tools.
+  - *Action Verbs*: Recall, Identify, State, Define, Measure, Label, Match.
+  - *Rule*: Never require multi-variable deduction or causal reasoning.
+* **Applying (40%) [Intermediate 475 / High 550]**:
+  - *Expectations*: Using known science concepts to solve routine problems; interpreting concrete diagrams, food chains, simple bar graphs, data tables; predicting direct physical changes.
+  - *Action Verbs*: Compare, Classify, Interpret, Describe, Predict, Determine, Implement.
+  - *Rule*: Must present an applied scenario (e.g., changing circuit cells, comparing two thermal materials, tracing shadows).
+* **Reasoning (20%) [High 550 / Advanced 625+]**:
+  - *Expectations*: Complex non-routine tasks, experimental design, analyzing multi-step datasets, isolating variables in a Fair Test, evaluating strengths/limitations of scientific models, hypothesizing cascading ecosystem effects.
+  - *Action Verbs*: Analyze, Synthesize, Evaluate, Hypothesize, Deduce, Generalize, Justify with Evidence.
+  - *Rule*: Always ask "Why?", "What if?", or require evidence-backed justification.
+
+---
+
+## 2. GRADE 4 SCIENCE CURRICULUM TOPICS (DATABASE & SYLLABUS)
+
+The application database and question generation engine must cover all subtopics:
+
+### Unit 1: Life Science (45%)
+1. **Animal & Human Biology**:
+   - Skeletons & Bones: Functions (Support, Protection of vital organs [Skull=Brain, Rib cage=Heart/Lungs], Movement/Growth).
+   - Muscular System: Movement via paired antagonistic muscles (contraction/shortening pulling on bone).
+   - Major Organs: Brain (control), Heart (blood circulation), Lungs (gas exchange), Stomach (digestion), Skin (protection).
+   - Invertebrates vs. Vertebrates (exoskeletons vs. soft-bodied; earthworms and soil compost/castings).
+2. **Plant Biology & Life Cycles**:
+   - Plant Structures: Roots (water/nutrient absorption, anchorage), Stem (support, transport), Leaves (food factory/photosynthesis), Flower/Petals (pollinator attraction), Seeds/Fruit.
+   - Life Cycle Stages: Seed -> Germination -> Growth & Development -> Flowering & Pollination -> Fruit & Seed Production -> Seed Dispersal.
+   - Seed Dispersal Mechanisms: Wind, Water, Animal fur/consumption, Explosive/mechanical.
+3. **Reproduction, Heredity & Adaptations**:
+   - Hereditary Traits (eye color, petal count, hair color) vs. Non-Hereditary Traits (broken branch, haircut, scars).
+   - Survival Strategies: High seed output (Dandelion), high egg count (sea turtles), parental care (mammals).
+   - Organism Adaptations: Desert vs. Rainforest plant/animal adaptations (e.g., water storage, reduced leaves/spines).
+4. **Ecosystems & Interactions**:
+   - Habitats: Desert, Savanna, Temperate Forest, Rainforest, Polar regions, Ponds, Rivers, Oceans.
+   - Linear Food Chains: Producers (plants/sunlight), Primary Consumers (herbivores), Secondary/Tertiary Consumers (predators).
+   - Ecological Relationships: Predator-Prey dynamics and Competition for limited resources (food, water, light, space).
+
+### Unit 2: Physical / Natural Science (35%)
+1. **States of Matter & Physical/Chemical Changes**:
+   - States of Matter: Particle spacing & motion in Solids, Liquids, and Gases.
+   - Physical Changes (Reversible, no new substance): Freezing, melting, boiling, condensation, dissolving (sugar in tea), crushing cans.
+   - Chemical Changes (Irreversible, new substance formed): Combustion/burning, rusting of iron nails, biological decomposition/food spoilage.
+   - Factors Affecting Dissolving Speed: Temperature increase, stirring/agitation, particle surface area (crushing solids into powder).
+   - Solution Concentration: High vs. Low concentration comparison.
+2. **Separation of Mixtures**:
+   - Sieving / Filtration (Gravel/sand, sand/water).
+   - Magnetic Attraction (Iron filings/clips from rice or sand).
+   - Flotation & Sinking (Density differences, cork vs. pebbles in water).
+   - Evaporation (Recovering dissolved salt or sugar from water).
+   - Hand Sorting (Large macroscopic particles).
+3. **Forces, Motion & Simple Machines**:
+   - Simple Machines: Levers (fulcrum position, load, effort force), Pulleys (direction change of pulling force), Gears (interlocking gears rotating in opposite directions), Inclined Planes (longer ramp reduces required effort force).
+4. **Energy, Light & Electricity**:
+   - Forms of Energy: Light, Heat/Thermal, Sound, Movement; Conservation of Energy.
+   - Heat Conduction: Thermal conductors vs. thermal insulators (metal vs. plastic spoon heat transfer).
+   - Light & Vision: Straight-line propagation, reflection, shadow length variation with light distance/angle.
+   - Simple Circuits: Battery/cell, wires, switch, lamp; conductors vs. insulators; adding cells to increase lamp brightness.
+
+### Unit 3: Earth Science (20%)
+1. **Earth's Physical Structure & History**:
+   - Concentric Internal Layers: Crust (solid/thin), Mantle (viscous/silicate rock), Outer Core (liquid iron/nickel), Inner Core (solid iron/nickel at 5,000–6,000°C under extreme pressure).
+   - Models of Earth: Strengths and limitations of physical representations (e.g., peach or boiled egg model).
+   - Weathering, Erosion & Deposition: Slow, gradual changes by wind and running water over geological time (dunes shifting, valley/canyon carving).
+   - Fossils: Plant/animal remains in sedimentary rock or ice; inferring past ancient environments (e.g., marine seashell fossil found in high mountains).
+2. **Water, Atmosphere & Climate**:
+   - Earth's Surface: Unequal distribution (approx. 70% water, 30% land); Atmosphere/Air properties.
+   - Fresh Water (rivers, lakes, groundwater, aflaj) vs. Salt Water (seas and oceans).
+   - Weather vs. Climate: Day-to-day atmospheric variability (temperature, humidity, precipitation, wind) vs. long-term averages.
+   - Climate Change: Rising global average temperatures, ocean level rise, glacier melt, river droughts, and desertification.
+3. **Earth in the Solar System**:
+   - Sun as a Star (produces light/heat); Planets and Moons shine by reflected sunlight.
+   - 8 Planets in Order: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.
+   - Planetary Motions: Earth's rotation on tilted axis (24 hours -> Day/Night cycle); Earth's revolution around Sun with axial tilt (365 days -> Four Seasons).
+   - Moon Phases & Tides: Orbit around Earth, changing illuminated portions seen from Earth, ocean tides caused by Moon's gravitational pull.
+4. **Earth's Resources & Sustainability**:
+   - Renewable Resources (wind, solar, water, timber) vs. Non-renewable (minerals, coal, oil, natural gas).
+   - Responsible Stewardship: 3Rs (Reduce, Reuse, Recycle) and soil/water conservation.
+
+---
+
+## 3. CORE WEB APPLICATION MODULES & FEATURES
+
+### Module 1: The Interactive eTIMSS Student Exam Engine (UI/UX)
+- **Digital Question Modalities (matching eTIMSS standards)**:
+  1. *Virtual Lab / Variable Control (PSI Task)*: Sliders and toggle switches allowing students to isolate independent variables (e.g., water amount in Tank 1 vs. Tank 2) to test fair testing rules.
+  2. *Interactive Drag-and-Drop*: Sorting mixture separation tools, sequencing life cycle cards, dragging bones onto a skeleton.
+  3. *Hotspot Identification*: Highlighting anatomical organs or botanical structures on interactive SVGs.
+  4. *Data Interpretation & Graphing*: Interactive dot plots, reading bar charts, temperature/time curves, and pie charts.
+  5. *Constructed Response (Open-Ended)*: Text boxes prompting for scientific justifications ("Why?", "State two controlled variables", "What evidence supports this?").
+- **Live Metadata HUD**: Header bar displaying current `[Content Domain]`, `[Cognitive Domain]`, and `[Benchmark Target: 400 / 475 / 550 / 625]`.
+
+### Module 2: The Teacher Exam Generator (Strict TIMSS Matrix Balancer)
+- **Input Parameters for Teachers**:
+  - *Assessment Scope*: Topic-specific (e.g., "Ecosystems & Food Chains" or "Separation of Mixtures") OR Full Diagnostic Grade 4 Science Exam.
+  - *Exam Length*: Quick Quiz (5 questions), Unit Test (10-12 questions), or Comprehensive Benchmark (25-50 questions).
+- **Strict Matrix Algorithmic Rule Engine**:
+  - If teacher chooses **Comprehensive / Multi-topic Exam**, enforce exact ratio:
+    * Content: **45% Life Science | 35% Physical Science | 20% Earth Science**
+    * Cognition: **40% Knowing | 40% Applying | 20% Reasoning**
+  - If teacher selects a **Single Topic**, enforce exact cognitive distribution:
+    * **40% Knowing | 40% Applying | 20% Reasoning** across the 4 benchmark tiers.
+- **Export & Print**:
+  - "Teacher Print View" (with complete Rubric, Answer Key, Misconception Analysis, and TIMSS Benchmark tags).
+  - "Interactive Digital Mode" (runs digitally on student tablets/laptops with instant scoring and logging).
+
+### Module 3: Pedagogical Diagnostic & Misconception Breakdown Engine
+Following the official 4-Step Remediation Protocol:
+- **Step 1: Identify Location of Struggling**: Pinpoints whether student failed at *Knowing* (forgot vocabulary/fact), *Applying* (misapplied a rule to a model), or *Reasoning* (failure to synthesize data/fair test variables).
+- **Step 2: Analyze Evidence**: Unpacks the student's selected distractor to pinpoint common elementary misconceptions (e.g., "Believing simple machines eliminate effort completely", "Assuming cold weather in one day defines climate", "Thinking Earth revolves around the Moon").
+- **Step 3: Diagnostic Questioning**: Generates a targeted Socratic prompt that guides the student to uncover their own error.
+- **Step 4: Targeted Re-instruction**: Displays a concise, visual conceptual card re-teaching the target standard.
+
+---
+
+## 4. TECHNICAL SPECIFICATIONS & IMPLEMENTATION STACK
+* **Frontend Architecture**: Modern Single-Page Application (HTML5, TailwindCSS, Vanilla JS or React/Vite).
+* **Responsive & Touch-First**: Tailored for tablet interactions (e.g., iPad/Chromebook touch gestures, smooth dragging, large tap targets).
+* **State Management**: Reactive state tracking student answers, timing, item-level cognitive analytics, and score distribution radar graphs.
+* **No External Dependencies (Self-Contained)**:
+  - Embed vector graphics (SVG) for anatomical diagrams, circuit schematics, and planetary orbits.
+  - Use HTML5 Canvas or SVG for interactive experiments (e.g., heat transfer, friction ramp, diffusion in beakers).
