@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"><head><meta charset="utf-8">
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>eTIMSS SciQuest 4</title>
 <style>
-:root{--bg:#f3f6f4;--sf:#fff;--tx:#14302b;--mu:#5b6f6a;--ln:#d5e0db;--pr:#0f6b5c;--L:#2e8b57;--P:#2f6fb5;--E:#b7791f;--K:#6b7fd7;--A:#0f6b5c;--R:#c2410c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#f3f6f4;--sf:#fff;--tx:#14302b;--mu:#5b6f6a;--ln:#d5e0db;--pr:#0f6b5c;--L:#2e8b57;--P:#2f6fb5;--E:#b7791f;--K:#6b7fd7;--A:#0f6b5c;--R:#c2410c}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1b18;--sf:#162824;--tx:#e6f0ed;--mu:#9bb2ab;--ln:#2a423c;--pr:#4cc2aa}}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif}
 header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;background:var(--pr);color:#fff;flex-wrap:wrap}
 header h1{margin:0;font-size:20px}header small{opacity:.85;display:block}
@@ -16,7 +17,7 @@ main{display:grid;grid-template-columns:340px 1fr;gap:18px;padding:18px 20px;max
 @media(max-width:860px){main{grid-template-columns:1fr}}
 .pn{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:16px}
 .pn h2{font-size:16px;margin:0 0 10px}.pn h3{font-size:14px;margin:14px 0 6px;color:var(--mu)}
-label.o{display:flex;gap:8px;align-items:center;padding:6px 0;min-height:36px}
+label.o{display:flex;gap:8px;align-items:center;padding:6px 0;min-height:36px;cursor:pointer}
 .grp{font-weight:600;margin-top:8px}.grp i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:6px}
 input[type=range]{width:100%}.big{font-size:28px;font-weight:700;color:var(--pr)}
 .bar{display:flex;height:26px;border-radius:6px;overflow:hidden;margin:4px 0;font-size:12px;color:#fff}.bar span{display:flex;align-items:center;justify-content:center;white-space:nowrap}
@@ -26,46 +27,73 @@ input[type=range]{width:100%}.big{font-size:28px;font-weight:700;color:var(--pr)
 .note{background:#fff4d6;color:#5a4300;padding:8px 12px;border-radius:8px;margin:8px 0;font-size:14px}
 .opt{display:block;width:100%;text-align:start;margin:6px 0;padding:12px;border:1.5px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--tx);cursor:pointer;min-height:48px}
 .opt.sel{border-color:var(--pr);background:var(--bg)}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.st #side,.st #guide,.st #resbtn{display:none}svg [data-r]:hover>*{stroke:#f5b30199;stroke-width:3}.st main{grid-template-columns:1fr}
+.st #side,.st #guide,.st #resbtn{display:none}.st main{grid-template-columns:1fr}
 .chip{display:inline-block;margin:4px;padding:10px 14px;border:1.5px solid var(--ln);border-radius:20px;background:var(--sf);cursor:grab;min-height:44px}.chip.sel{border-color:var(--pr);background:var(--bg);box-shadow:0 0 0 2px var(--pr)}
 .zn{min-height:60px;border:2px dashed var(--ln);border-radius:10px;padding:6px;margin:6px 0}.zn b{font-size:13px;color:var(--mu)}
 svg [data-r]{cursor:pointer}svg [data-r]:hover{opacity:.7}.pk>*{stroke:#f5b301;stroke-width:4}
 textarea,input[type=text]{width:100%;padding:10px;font:inherit;border:1.5px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx)}
 .fb{padding:10px;border-radius:8px;margin:10px 0}.good{background:#dff3e6;color:#14532d}.bad{background:#fde2e0;color:#7f1d1d}
 @media print{header,#side,.noprint{display:none!important}main{display:block;padding:0}.k{display:block!important}.pn{border:0}}
-</style></head><body>
-<header><div><h1 id="ttl"></h1><small id="sub"></small></div><div class="row"><button class="btn" id="resbtn"></button><button class="btn" id="guide"></button><button class="btn" id="lang"></button></div></header>
+</style>
+</head>
+<body>
+<header>
+  <div><h1 id="ttl">eTIMSS SciQuest 4</h1><small id="sub"></small></div>
+  <div class="row">
+    <button class="btn" id="guide">Question types</button>
+    <button class="btn" id="lang">العربية</button>
+  </div>
+</header>
 <main>
-<aside id="side" class="pn"><h2 id="h_scope"></h2><div id="topics"></div>
-<h3 id="h_len"></h3><div class="big" id="nv">10</div><input type="range" id="n" min="5" max="20" value="10" aria-label="count">
-<h3 id="h_skill"></h3><div id="skills"></div>
-<div id="types"></div><p style="margin-top:16px"><button class="btn" id="gen" style="width:100%"></button></p></aside>
-<section id="out" class="pn"></section>
+  <aside id="side" class="pn">
+    <h2 id="h_scope">1. Topics</h2>
+    <div id="topics"></div>
+    <h3 id="h_len">2. Number of questions</h3>
+    <div class="big" id="nv">10</div>
+    <input type="range" id="n" min="5" max="25" value="10" aria-label="count">
+    <h3 id="h_skill">3. Cognitive Focus</h3>
+    <div id="skills"></div>
+    <p style="margin-top:16px"><button class="btn" id="gen" style="width:100%">Build exam</button></p>
+  </aside>
+  <section id="out" class="pn"></section>
 </main>
+
 <script>
-const T={body:['L','Body: bones, muscles, organs','الجسم: العظام والعضلات والأعضاء'],plants:['L','Plants & life cycles','النباتات ودورات الحياة'],her:['L','Heredity & adaptation','الوراثة والتكيف'],eco:['L','Ecosystems & food chains','النظم البيئية والسلاسل الغذائية'],
-mat:['P','Matter & dissolving','المادة والذوبان'],mix:['P','Separating mixtures','فصل المخاليط'],frc:['P','Forces & simple machines','القوى والآلات البسيطة'],nrg:['P','Energy, light & circuits','الطاقة والضوء والدوائر'],
-str:['E','Earth structure & fossils','تركيب الأرض والحفريات'],wea:['E','Water, weather & climate','الماء والطقس والمناخ'],sol:['E','Solar system','النظام الشمسي'],res:['E','Resources','موارد الأرض']};
+const T={
+  body:['L','Body: bones, muscles, organs','الجسم: العظام والعضلات والأعضاء'],
+  plants:['L','Plants & life cycles','النباتات ودورات الحياة'],
+  her:['L','Heredity & adaptation','الوراثة والتكيف'],
+  eco:['L','Ecosystems & food chains','النظم البيئية والسلاسل الغذائية'],
+  mat:['P','Matter & dissolving','المادة والذوبان'],
+  mix:['P','Separating mixtures','فصل المخاليط'],
+  frc:['P','Forces & simple machines','القوى والآلات البسيطة'],
+  nrg:['P','Energy, light & circuits','الطاقة والضوء والدوائر'],
+  str:['E','Earth structure & fossils','تركيب الأرض والحفريات'],
+  wea:['E','Water, weather & climate','الماء والطقس والمناخ'],
+  sol:['E','Solar system','النظام الشمسي'],
+  res:['E','Resources','موارد الأرض']
+};
 const C={L:['Life Science','علوم الحياة','var(--L)',45],P:['Physical Science','العلوم الفيزيائية','var(--P)',35],E:['Earth Science','علوم الأرض','var(--E)',20]};
 const G={K:['Knowing','المعرفة','var(--K)',40],A:['Applying','التطبيق','var(--A)',40],R:['Reasoning','الاستدلال','var(--R)',20]};
+
 const B=[
-['body','K',400,'Which bones protect the brain?|أي العظام تحمي الدماغ؟','Skull;Rib cage;Spine;Arm bones|الجمجمة;القفص الصدري;العمود الفقري;عظام الذراع','Confuses the skull with the rib cage (heart/lungs)|يخلط بين الجمجمة والقفص الصدري'],
-['body','K',475,'Which organ pumps blood around the body?|أي عضو يضخ الدم في الجسم؟','Heart;Lungs;Stomach;Brain|القلب;الرئتان;المعدة;الدماغ','Lungs "pump" because they move when we breathe|يظن أن الرئتين تضخان الدم'],
+['body','K',400,'Which bones protect the brain?|أي العظام تحمي الدماغ؟','Skull;Rib cage;Spine;Arm bones|الجمجمة;القفص الصدري;العمود الفقري;عظام الذراع','Confuses the skull with the rib cage|يخلط بين الجمجمة والقفص الصدري'],
+['body','K',475,'Which organ pumps blood around the body?|أي عضو يضخ الدم في الجسم؟','Heart;Lungs;Stomach;Brain|القلب;الرئتان;المعدة;الدماغ','Lungs pump because they move|يظن أن الرئتين تضخان الدم'],
 ['plants','K',400,'Which plant part takes in water from the soil?|أي جزء في النبات يمتص الماء من التربة؟','Roots;Leaves;Flower;Stem|الجذور;الأوراق;الزهرة;الساق','Thinks leaves drink water like mouths|يظن أن الأوراق تشرب الماء'],
 ['plants','K',475,'Which stage comes right after germination?|أي مرحلة تأتي مباشرة بعد الإنبات؟','Seedling growth;Pollination;Seed dispersal;Fruit forming|نمو الشتلة;التلقيح;انتشار البذور;تكوّن الثمرة','Mixes up the order of the life cycle|يخلط ترتيب مراحل دورة الحياة'],
 ['plants','A',475,'A seed has fluffy hairs like a parachute. How is it dispersed?|لبذرة شعيرات خفيفة كالمظلة. كيف تنتشر؟','By wind;By water;On animal fur;By exploding|بالرياح;بالماء;على فرو الحيوان;بالانفجار','Ignores structure–function link|يهمل العلاقة بين التركيب والوظيفة'],
-['her','K',475,'Which trait is inherited?|أي صفة تُورَّث؟','Eye colour;A scar;A haircut;A broken branch|لون العينين;ندبة;قصّة شعر;غصن مكسور','Thinks any body change can be passed to children|يظن أن أي تغيّر في الجسم ينتقل للأبناء'],
+['her','K',475,'Which trait is inherited?|أي صفة تُورَّث؟','Eye colour;A scar;A haircut;A broken branch|لون العينين;ندبة;قصّة شعر;غصن مكسور','Thinks any body change can be passed|يظن أن أي تغيّر في الجسم ينتقل'],
 ['her','A',475,'A dog loses its tail in an accident. What are its puppies like?|فقد كلب ذيله في حادث. كيف سيكون صغاره؟','Born with normal tails;Born with no tails;Born with short tails;Lose tails later|يولدون بذيول عادية;بلا ذيول;بذيول قصيرة;يفقدون ذيولهم لاحقًا','Believes acquired changes are inherited|يظن أن التغيرات المكتسبة تورَّث'],
 ['body','A',550,'You bend your arm. What does the biceps do?|تثني ذراعك. ماذا تفعل العضلة ذات الرأسين؟','Contracts and pulls the bone;Relaxes and pushes;Stays the same;Turns into bone|تنقبض وتشد العظم;ترتخي وتدفع;لا تتغير;تتحول إلى عظم','Thinks muscles can push bones|يظن أن العضلات تدفع العظام'],
 ['eco','A',475,'Grass → grasshopper → frog → snake. Which is the primary consumer?|عشب ← جندب ← ضفدع ← ثعبان. من المستهلك الأول؟','Grasshopper;Grass;Frog;Snake|الجندب;العشب;الضفدع;الثعبان','Calls the plant a consumer|يعدّ النبات مستهلكًا'],
 ['eco','A',550,'In that chain, frogs disappear. What happens to grasshoppers first?|في السلسلة نفسها اختفت الضفادع. ماذا يحدث للجندب أولًا؟','Their number increases;Their number decreases;No change;They disappear|يزداد عددها;يقل عددها;لا تتغير;تختفي','Thinks removing a predator harms its prey|يظن أن اختفاء المفترس يضر بالفريسة'],
-['eco','R',550,'Sara tests if light affects plant growth. What must stay the same?|تختبر سارة أثر الضوء في نمو النبات. ما الذي يجب أن يبقى ثابتًا؟','Amount of water;Amount of light;Final height;Nothing|كمية الماء;كمية الضوء;الطول النهائي;لا شيء','Cannot isolate one variable (fair test)|لا يعزل متغيرًا واحدًا (اختبار عادل)'],
-['eco','R',625,'Lizards and birds eat the same insects, then insects become scarce. What is the best prediction?|السحالي والطيور تأكل الحشرات نفسها ثم قلّت الحشرات. ما أفضل توقع؟','Competition increases and both numbers may fall;Both grow;Only insects grow;Nothing changes|تزداد المنافسة وقد يقل عددهما;يزداد عددهما;تزداد الحشرات فقط;لا شيء يتغير','Misses competition for limited food|يغفل التنافس على الغذاء المحدود'],
+['eco','R',550,'Sara tests if light affects plant growth. What must stay the same?|تختبر سارة أثر الضوء في نمو النبات. ما الذي يجب أن يبقى ثابتًا؟','Amount of water;Amount of light;Final height;Nothing|كمية الماء;كمية الضوء;الطول النهائي;لا شيء','Cannot isolate one variable (fair test)|لا يعزل متغيرًا واحدًا'],
+['eco','R',625,'Lizards and birds eat the same insects, then insects become scarce. Best prediction?|السحالي والطيور تأكل الحشرات نفسها ثم قلّت الحشرات. ما أفضل توقع؟','Competition increases and both numbers may fall;Both grow;Only insects grow;Nothing changes|تزداد المنافسة وقد يقل عددهما;يزداد عددهما;تزداد الحشرات فقط;لا شيء يتغير','Misses competition for limited food|يغفل التنافس على الغذاء'],
 ['mat','K',400,'Which change is irreversible?|أي تغيّر لا يمكن عكسه؟','Burning wood;Melting ice;Boiling water;Freezing juice|حرق الخشب;انصهار الثلج;غليان الماء;تجمّد العصير','Thinks all changes can be reversed|يظن أن كل التغيرات تُعكس'],
 ['mat','A',475,'Where does sugar dissolve fastest?|أين يذوب السكر أسرع؟','Hot water, stirred;Cold water, stirred;Hot water, not stirred;Cold water, not stirred|ماء ساخن مع التحريك;ماء بارد مع التحريك;ماء ساخن دون تحريك;ماء بارد دون تحريك','Considers only one factor|ينتبه لعامل واحد فقط'],
 ['mat','R',625,'Time to dissolve: 20°C = 60 s, 40°C = 35 s, 60°C = 20 s. Best conclusion?|زمن الذوبان: ٢٠°م = ٦٠ ث، ٤٠°م = ٣٥ ث، ٦٠°م = ٢٠ ث. ما أفضل استنتاج؟','Higher temperature dissolves faster;Temperature has no effect;Colder is faster;Sugar disappears|الحرارة الأعلى تذيب أسرع;لا أثر للحرارة;الأبرد أسرع;السكر يختفي','Cannot read a trend from data|لا يستخلص اتجاهًا من البيانات'],
 ['mix','K',400,'Which tool separates iron nails from sand?|أي أداة تفصل مسامير الحديد عن الرمل؟','Magnet;Filter paper;Heat;Spoon|مغناطيس;ورق ترشيح;حرارة;ملعقة','Chooses filter for every mixture|يختار الترشيح لكل مخلوط'],
-['mix','A',475,'Salt is dissolved in water. How can you get the salt back?|الملح مذاب في الماء. كيف تستعيده؟','Evaporation;Sieving;Magnet;Hand sorting|التبخير;النخل;المغناطيس;الفرز اليدوي','Believes a sieve can catch dissolved salt|يظن أن المنخل يحجز الملح المذاب'],
+['mix','A',475,'Salt is dissolved in water. How can you get the salt back?|الملح مذاب في الماء. كيف تستعيده؟','Evaporation;Sieving;Magnet;Hand sorting|التبخير;النخل;المغناطيس;الفرز اليدوي','Believes a sieve can catch dissolved salt|يظن أن المنخل يحجز المذاب'],
 ['mix','A',550,'A mix has gravel, sand and iron filings. What is the best order?|مخلوط من حصى ورمل وبرادة حديد. ما أفضل ترتيب؟','Magnet, then sieve;Sieve, then evaporate;Filter, then magnet;Add water only|المغناطيس ثم المنخل;المنخل ثم التبخير;الترشيح ثم المغناطيس;إضافة الماء فقط','Cannot plan multi-step separation|لا يخطط لفصل متعدد الخطوات'],
 ['frc','K',400,'A seesaw is an example of which simple machine?|الأرجوحة المتوازنة مثال على أي آلة بسيطة؟','Lever;Pulley;Gear;Ramp|الرافعة;البكرة;الترس;المستوى المائل','Confuses lever and pulley|يخلط بين الرافعة والبكرة'],
 ['frc','A',475,'A longer ramp is used to lift a box. The pushing force is…|يُستخدم منحدر أطول لرفع صندوق. قوة الدفع…','Smaller;Larger;The same;Zero|أصغر;أكبر;نفسها;صفر','Thinks machines remove effort completely|يظن أن الآلة تلغي الجهد تمامًا'],
@@ -76,298 +104,273 @@ const B=[
 ['str','A',475,'A seashell fossil is found on a high mountain. What does this suggest?|عُثر على حفرية صدفة على جبل عالٍ. ماذا يدل ذلك؟','The place was once under the sea;Shells can climb;People left it;Wind made it|المكان كان تحت البحر;الأصداف تتسلق;تركها الناس;صنعتها الرياح','Cannot infer past environments|لا يستنتج البيئات القديمة'],
 ['wea','A',475,'Today is very hot. Does this mean the climate is hot?|اليوم شديد الحر. هل يعني ذلك أن المناخ حار؟','No, climate is the long-term pattern;Yes, always;Only at night;Climate is today\'s weather|لا، المناخ نمط طويل المدى;نعم دائمًا;ليلًا فقط;المناخ هو طقس اليوم','Confuses weather with climate|يخلط بين الطقس والمناخ'],
 ['sol','K',400,'What causes day and night?|ما سبب تعاقب الليل والنهار؟','Earth rotating on its axis;Earth orbiting the Sun;Moon orbiting Earth;Sun moving|دوران الأرض حول محورها;دوران الأرض حول الشمس;دوران القمر حول الأرض;حركة الشمس','Confuses rotation with revolution|يخلط بين الدوران والدوران حول الشمس'],
-['sol','R',550,'Mona says the Moon makes its own light. Which evidence shows she is wrong?|تقول منى إن القمر يصدر ضوءه. أي دليل يبيّن خطأها؟','Its lit part changes as it orbits while the Sun lights one side;It is round;It is far;It is white|الجزء المضاء يتغير أثناء دورانه والشمس تضيء جانبًا واحدًا;شكله دائري;بعيد;أبيض','Thinks Moon is a light source|يظن أن القمر مصدر ضوء'],
+['sol','R',550,'Mona says the Moon makes its own light. Which evidence shows she is wrong?|تقول منى إن القمر يصدر ضوءه. أي دليل يبيّن خطأها؟','Its lit part changes as it orbits;It is round;It is far;It is white|الجزء المضاء يتغير أثناء دورانه;شكله دائري;بعيد;أبيض','Thinks Moon is a light source|يظن أن القمر مصدر ضوء'],
 ['res','K',475,'Which resource is renewable?|أي مورد متجدد؟','Wind;Coal;Oil;Natural gas|الرياح;الفحم;النفط;الغاز الطبيعي','Thinks all fuels renew|يظن أن كل أنواع الوقود تتجدد'],
-['res','R',625,'A town can use coal or solar panels. Which is the best long-term choice and why?|بلدة تختار بين الفحم والألواح الشمسية. ما أفضل خيار طويل المدى ولماذا؟','Solar: renewable and does not run out;Coal: cheaper today;Coal: lasts forever;Neither|الشمسية: متجددة ولا تنفد;الفحم: أرخص اليوم;الفحم: يدوم للأبد;لا هذا ولا ذاك','Ignores long-term sustainability|يغفل الاستدامة طويلة المدى']
-].map((r,i)=>{const s=x=>x.split('|').map(y=>y.split(';'));const q=r[3].split('|'),o=s(r[4]),m=r[5].split('|');return{id:i,t:r[0],c:T[r[0]][0],g:r[1],b:r[2],q,o,m}});
+['res','R',625,'A town can use coal or solar panels. Which is the best choice and why?|بلدة تختار بين الفحم والألواح الشمسية. ما أفضل خيار ولماذا؟','Solar: renewable and does not run out;Coal: cheaper today;Coal: lasts forever;Neither|الشمسية: متجددة ولا تنفد;الفحم: أرخص اليوم;الفحم: يدوم للأبد;لا هذا ولا ذاك','Ignores long-term sustainability|يغفل الاستدامة طويلة المدى']
+].map((r,i)=>{
+  const s=x=>x.split('|').map(y=>y.split(';'));
+  return {id:i, t:r[0], c:T[r[0]][0], g:r[1], b:r[2], q:r[3].split('|'), o:s(r[4]), m:r[5].split('|'), ty:'mcq'};
+});
 
-// Dynamic URL detection ensures it works without sign in on any hosting platform
-const getBaseUrl = () => {
-  try {
-    const loc = window.location;
-    if (loc && loc.origin && loc.origin !== 'null' && !loc.origin.includes('claude.ai')) {
-      return loc.origin + loc.pathname;
-    }
-  } catch(_) {}
-  return window.location.href.split('#')[0];
+const S={
+  en:{ttl:'eTIMSS SciQuest 4',sub:'Grade 4 Science · TIMSS Exam Builder',lang:'العربية',scope:'1. Select Topics',len:'2. Number of questions',skill:'3. Cognitive Focus',gen:'Build Exam',bal:'Balanced TIMSS (40/40/20)',sel:'Select all',empty:'Select topics on the left and click "Build Exam".',key:'Answer',mis:'Misconception',stu:'Start Student Quiz',share:'Share Link with Students',copy:'Copy Link',ans:'Show Answer Key',q:'Question',fin:'Finish',next:'Next',check:'Check Answer',score:'Score',again:'Try Again',hint:'Tap to select your answer:'},
+  ar:{ttl:'eTIMSS SciQuest 4',sub:'علوم الصف الرابع · منشئ اختبارات TIMSS',lang:'English',scope:'١. اختر المواضيع',len:'٢. عدد الأسئلة',skill:'٣. التركيز الإدراكي',gen:'إنشاء الاختبار',bal:'متوازن حسب TIMSS (٤٠ / ٤٠ / ٢٠)',sel:'تحديد الكل',empty:'اختر المواضيع من القائمة واضغط "إنشاء الاختبار".',key:'الإجابة',mis:'التصور الخاطئ الشائع',stu:'بدء وضع الاختبار للطالب',share:'مشاركة الرابط مع الطلبة',copy:'نسخ الرابط',ans:'إظهار الإجابات النموذجية',q:'سؤال',fin:'إنهاء',next:'التالي',check:'تحقق من الإجابة',score:'النتيجة',again:'إعادة المحاولة',hint:'اضغط لاختيار الإجابة الصحيحة:'}
 };
 
-let ST=false,P=null,TK='pv';
-const sp=s=>s.split('|').map(y=>y.split(';')),it=s=>s.split(';').map(p=>{const[a,z]=p.split(':');return[a.split('|'),+z]});
-const x=(t,g,b,ty,q,m,o)=>{o.id=B.length;if(o.acc){o.mod=o.acc.split('|').map(y=>y.split(',')[0]);o.acc=o.acc.split(/[|,]/)}if(o.kw)o.kw=o.kw.split(';').map(g=>g.split(','));if(typeof o.mod=='string')o.mod=o.mod.split('|');B.push({t,c:T[t][0],g,b,ty,q:q.split('|'),m:m.split('|'),...o})};
-const TY={mcq:['Multiple choice / image','اختيار من متعدد / صورة','Reads a question, often with a diagram or graph, and taps one answer.','يقرأ السؤال، وغالبًا معه رسم أو مخطط، ويختار إجابة.','Auto: 1 or 0.','تلقائي: ١ أو ٠.','Knowing, Applying','المعرفة، التطبيق'],
-fill:['Fill in the blank','أكمل الفراغ','Types the missing science word.','يكتب المصطلح العلمي الناقص.','Auto: accepts several spellings in English and Arabic.','تلقائي: يقبل عدة صيغ بالعربية والإنجليزية.','Knowing','المعرفة'],
-hot:['Hotspot','نقطة ساخنة على الصورة','Taps a part of an interactive diagram: organ, plant part or Earth layer.','يلمس جزءًا في رسم تفاعلي: عضو أو جزء نبات أو طبقة أرضية.','Auto: 1 or 0.','تلقائي: ١ أو ٠.','Knowing','المعرفة'],
-drag:['Drag and drop','سحب وإفلات','Drags (or taps) cards into boxes to sort, match or put steps in order.','يسحب البطاقات (أو يلمسها) إلى مربعات للتصنيف أو المطابقة أو الترتيب.','Auto: partial credit for each correct card.','تلقائي: درجة جزئية لكل بطاقة صحيحة.','Knowing, Applying','المعرفة، التطبيق'],
-lab:['Virtual lab','مختبر افتراضي','Changes sliders and switches to run an experiment: fair test, ramp or circuit. The result updates live.','يغيّر المنزلقات والمفاتيح لتنفيذ تجربة: اختبار عادل أو منحدر أو دائرة، وتظهر النتيجة مباشرة.','Auto: the setup must meet the rule (1 or 0).','تلقائي: يجب أن يحقق الإعداد الشرط (١ أو ٠).','Applying, Reasoning','التطبيق، الاستدلال'],
-exp:['Explain (written answer)','اشرح (إجابة كتابية)','Writes a short justification using evidence from the data or experiment.','يكتب تبريرًا قصيرًا مستندًا إلى دليل من البيانات أو التجربة.','Auto keyword check gives partial credit and shows a model answer; a teacher should review.','فحص آلي بالكلمات المفتاحية لدرجة جزئية مع إجابة نموذجية؛ ويُفضّل أن يراجعها المعلم.','Reasoning','الاستدلال']};
-const tn=(k,j)=>TY[k][2*j+(L=='ar'?1:0)],I2=()=>L=='ar'?1:0;
-const R=(r,s,c)=>`<g data-r="${r}" fill="${c}" stroke="#555">${s}</g>`;
-const IMG={body:()=>`<svg viewBox="0 0 200 230" width="220" role="img"><rect x="62" y="56" width="76" height="130" rx="20" fill="#f6d9c4" stroke="#555"/><circle cx="100" cy="30" r="24" fill="#f6d9c4" stroke="#555"/>${R('brain','<ellipse cx="100" cy="24" rx="15" ry="11"/>','#e8a0b8')}${R('lungs','<ellipse cx="82" cy="98" rx="15" ry="26"/><ellipse cx="118" cy="98" rx="15" ry="26"/>','#9ec9e8')}${R('heart','<circle cx="104" cy="108" r="10"/>','#d94b4b')}${R('stomach','<ellipse cx="112" cy="150" rx="17" ry="11"/>','#e8c07a')}<rect x="70" y="186" width="20" height="40" fill="#f6d9c4" stroke="#555"/><rect x="110" y="186" width="20" height="40" fill="#f6d9c4" stroke="#555"/></svg>`,
-plant:()=>`<svg viewBox="0 0 200 240" width="220" role="img"><rect y="150" width="200" height="90" fill="#8b6b4a"/>${R('roots','<path d="M100 150 L70 205 M100 150 L100 222 M100 150 L132 205" stroke="#e6d3a8" stroke-width="9" fill="none"/>','none')}${R('stem','<rect x="95" y="60" width="10" height="92"/>','#3a9a4a')}${R('leaf','<ellipse cx="70" cy="110" rx="26" ry="11"/><ellipse cx="132" cy="95" rx="26" ry="11"/>','#5cc15c')}${R('flower','<circle cx="100" cy="40" r="20"/>','#f08fb0')}</svg>`,
-earth:()=>`<svg viewBox="0 0 200 200" width="220" role="img">${R('crust','<circle cx="100" cy="100" r="92"/>','#8b6b4a')}${R('mantle','<circle cx="100" cy="100" r="78"/>','#d9822b')}${R('outer','<circle cx="100" cy="100" r="48"/>','#f2b01e')}${R('inner','<circle cx="100" cy="100" r="22"/>','#f7e26b')}</svg>`,
-chart:()=>{const v=[2,5,8,11],l=[0,2,4,6];return `<svg viewBox="0 0 260 170" width="300" role="img"><line x1="30" y1="140" x2="250" y2="140" stroke="currentColor"/>${v.map((h,i)=>`<rect x="${45+i*54}" y="${140-h*10}" width="36" height="${h*10}" fill="#2e8b57"/><text x="${63+i*54}" y="156" font-size="12" text-anchor="middle" fill="currentColor">${l[i]} h</text><text x="${63+i*54}" y="${134-h*10}" font-size="12" text-anchor="middle" fill="currentColor">${h} cm</text>`).join('')}</svg>`}};
-const bk=(s,v)=>60-(v[s+'t']?25:0)-(v[s+'s']?10:0)-(v[s+'f']?15:0);
-const fc=s=>[{k:s+'t',n:['Beaker '+s+' water','كأس '+s+' الماء'],o:[['Cold','Hot'],['بارد','ساخن']]},{k:s+'s',n:['Beaker '+s+' stirring','كأس '+s+' التحريك'],o:[['No','Yes'],['لا','نعم']]},{k:s+'f',n:['Beaker '+s+' sugar','كأس '+s+' السكر'],o:[['Cube','Powder'],['مكعب','مسحوق']]}];
-const LAB={fair:{c:[...fc('A'),...fc('B')],v:v=>`${L=='ar'?'زمن الذوبان':'Dissolve time'} — A: ${bk('A',v)} s · B: ${bk('B',v)} s`,ok:v=>v.At!=v.Bt&&v.As==v.Bs&&v.Af==v.Bf},
-ramp:{c:[{k:'len',min:1,max:8,n:['Ramp length (m)','طول المنحدر (م)']}],v:v=>`${L=='ar'?'قوة الدفع':'Pushing force'}: ${Math.round(100/v.len)} N`,ok:v=>100/v.len<=25},
-circ:{c:[{k:'cells',min:1,max:4,n:['Cells','الخلايا']}],v:v=>(L=='ar'?'السطوع: ':'Brightness: ')+v.cells,ok:v=>v.cells>=3}};
-x('body','K',400,'hot','Tap the organ that pumps blood.|المس العضو الذي يضخ الدم.','Picks the lungs because they move|يختار الرئتين لأنها تتحرك',{img:'body',ans:'heart'});
-x('body','K',475,'hot','Tap the organs we use to breathe in oxygen.|المس العضوين اللذين نستنشق بهما الأكسجين.','Confuses lungs with stomach|يخلط بين الرئتين والمعدة',{img:'body',ans:'lungs'});
-x('body','K',400,'hot','Tap the organ that controls the whole body.|المس العضو الذي يتحكم في الجسم كله.','Thinks the heart is the control centre|يظن أن القلب مركز التحكم',{img:'body',ans:'brain'});
-x('plants','K',400,'hot','Tap the part where the plant makes food.|المس الجزء الذي يصنع فيه النبات غذاءه.','Thinks roots make food|يظن أن الجذور تصنع الغذاء',{img:'plant',ans:'leaf'});
-x('plants','K',475,'hot','Tap the part that attracts insects for pollination.|المس الجزء الذي يجذب الحشرات للتلقيح.','Confuses flower with fruit|يخلط بين الزهرة والثمرة',{img:'plant',ans:'flower'});
-x('str','K',475,'hot','Tap the layer made of liquid iron and nickel.|المس الطبقة المكونة من حديد ونيكل سائلين.','Thinks the whole core is solid|يظن أن اللب كله صلب',{img:'earth',ans:'outer'});
-x('str','K',400,'hot','Tap the thin outer layer we live on.|المس الطبقة الرقيقة الخارجية التي نعيش عليها.','Thinks we live on the mantle|يظن أننا نعيش على الستار',{img:'earth',ans:'crust'});
-x('plants','K',400,'fill','Plants make their food in their ______.|تصنع النباتات غذاءها في ______.','Thinks roots make food|يظن أن الجذور تصنع الغذاء',{acc:'leaves,leaf|الأوراق,أوراق,الورقة,ورقة'});
-x('sol','K',400,'fill','The planet closest to the Sun is ______.|أقرب كوكب إلى الشمس هو ______.','Guesses Earth or Venus|يخمّن الأرض أو الزهرة',{acc:'mercury|عطارد'});
-x('mat','K',475,'fill','Water changing into gas when heated is called ______.|يسمى تحول الماء إلى غاز بالتسخين ______.','Confuses it with condensation|يخلطه بالتكاثف',{acc:'evaporation,boiling,evaporating|تبخر,التبخر,غليان,الغليان'});
-x('eco','K',475,'fill','An animal that hunts other animals is a ______.|الحيوان الذي يصطاد حيوانات أخرى يسمى ______.','Mixes predator and prey|يخلط بين المفترس والفريسة',{acc:'predator|مفترس,المفترس'});
-x('nrg','K',475,'fill','A material that does not let electricity pass is an ______.|المادة التي لا تمرر الكهرباء تسمى ______.','Confuses insulator with conductor|يخلط بين العازل والموصل',{acc:'insulator|عازل,العازل'});
-x('wea','K',475,'fill','The average weather of a place over many years is its ______.|متوسط طقس مكان ما عبر سنوات طويلة هو ______.','Confuses weather with climate|يخلط بين الطقس والمناخ',{acc:'climate|مناخ,المناخ'});
-x('body','K',400,'fill','The skull protects the ______.|تحمي الجمجمة ______.','Says heart or lungs|يقول القلب أو الرئتين',{acc:'brain|الدماغ,دماغ,المخ,مخ'});
-x('plants','K',475,'drag','Put the life cycle in order.|رتّب مراحل دورة الحياة.','Mixes flowering and germination|يخلط بين الإزهار والإنبات',{ord:1,z:sp('1;2;3;4;5|١;٢;٣;٤;٥'),it:it('Seed|بذرة:0;Germination|إنبات:1;Growth|نمو:2;Flowering|إزهار:3;Fruit and seeds|ثمار وبذور:4')});
-x('mix','A',475,'drag','Drag each mixture to the best way to separate it.|اسحب كل مخلوط إلى أفضل طريقة لفصله.','Uses a sieve for dissolved substances|يستخدم المنخل للمواد الذائبة',{z:sp('Magnet;Sieve;Evaporation|المغناطيس;المنخل;التبخير'),it:it('Iron filings + rice|برادة حديد + أرز:0;Sand + gravel|رمل + حصى:1;Salt + water|ملح + ماء:2;Paper clips + sand|مشابك + رمل:0')});
-x('nrg','A',475,'drag','Sort the materials.|صنّف المواد.','Thinks all metals insulate|يظن أن الفلزات كلها عازلة',{z:sp('Conductor;Insulator|موصل;عازل'),it:it('Copper|نحاس:0;Iron|حديد:0;Plastic|بلاستيك:1;Wood|خشب:1;Rubber|مطاط:1')});
-x('res','A',475,'drag','Sort the resources.|صنّف الموارد.','Thinks fuels renew quickly|يظن أن الوقود يتجدد بسرعة',{z:sp('Renewable;Non-renewable|متجدد;غير متجدد'),it:it('Wind|رياح:0;Sunlight|ضوء الشمس:0;Coal|فحم:1;Oil|نفط:1;Timber|أخشاب:0')});
-x('eco','A',550,'drag','Build the food chain from producer to top predator.|ابنِ السلسلة الغذائية من المنتج إلى المفترس الأعلى.','Puts the predator first|يضع المفترس أولًا',{ord:1,z:sp('1;2;3;4|١;٢;٣;٤'),it:it('Grass|عشب:0;Grasshopper|جندب:1;Frog|ضفدع:2;Snake|ثعبان:3')});
-x('mat','R',625,'lab','Test whether water temperature changes how fast sugar dissolves. Set up beakers A and B as a fair test.|اختبر هل تؤثر حرارة الماء في سرعة ذوبان السكر. جهّز الكأسين A وB كاختبار عادل.','Changes more than one variable|يغيّر أكثر من متغير',{lab:'fair',mod:'Only temperature differs; stirring and sugar form are identical.|تختلف الحرارة فقط ويتطابق التحريك وشكل السكر.'});
-x('frc','A',550,'lab','A 100 N box must be lifted 1 m. Set the ramp length so the pushing force is 25 N or less.|يجب رفع صندوق وزنه ١٠٠ نيوتن مسافة ١ م. اضبط طول المنحدر لتكون قوة الدفع ٢٥ نيوتن أو أقل.','Thinks a ramp removes effort|يظن أن المنحدر يلغي الجهد',{lab:'ramp',mod:'Length 4 m or more.|٤ م أو أكثر.'});
-x('nrg','A',475,'lab','Make the bulb brightness 3 or more by choosing the number of cells.|اجعل سطوع المصباح ٣ أو أكثر باختيار عدد الخلايا.','Thinks more cells dim the bulb|يظن أن زيادة الخلايا تخفّت المصباح',{lab:'circ',mod:'3 or 4 cells.|٣ أو ٤ خلايا.'});
-x('eco','R',550,'exp','Plant A grows in sunlight, plant B in a dark cupboard; both get water. A is taller. Explain why.|ينمو النبات A في الشمس والنبات B في خزانة مظلمة ويُسقيان بالماء. A أطول. فسّر السبب.','Says plants only need water|يقول إن النبات يحتاج الماء فقط',{kw:'light,sun,ضوء,شمس,الضوء;food,energy,photosynthesis,make,غذاء,طاقة,بناء ضوئي',mod:'Leaves need light to make food, so A made more food and grew taller.|تحتاج الأوراق الضوء لصنع الغذاء فنما A أكثر.'});
-x('mat','R',550,'exp','Sam says melting ice is a chemical change. Do you agree? Explain.|يقول سام إن انصهار الثلج تغيّر كيميائي. هل توافقه؟ فسّر.','Thinks any change in look is chemical|يظن أن أي تغير في الشكل كيميائي',{kw:'no,not,disagree,لا,أخالف;same,reversible,freeze,new,نفس,يمكن,يتجمد,جديدة',mod:'No. It is still water and can freeze again; no new substance forms.|لا. ما زال ماءً ويمكن أن يتجمد ولا تتكوّن مادة جديدة.'});
-x('sol','R',625,'exp','Explain why we have seasons.|فسّر سبب حدوث الفصول.','Thinks Earth is nearer the Sun in summer|يظن أن الأرض أقرب إلى الشمس صيفًا',{kw:'tilt,axis,ميل,محور,مائل;orbit,around the sun,revolv,حول الشمس,تدور,دوران',mod:'Earth is tilted on its axis and orbits the Sun, so sunlight hits places differently during the year.|الأرض مائلة على محورها وتدور حول الشمس فيختلف سقوط الضوء خلال السنة.'});
-x('frc','R',550,'exp','Does a lever make a job easier? Use a seesaw or crowbar as evidence.|هل تسهّل الرافعة العمل؟ استدل بمثال كالأرجوحة أو عتلة.','Thinks machines remove all effort|يظن أن الآلة تلغي الجهد',{kw:'less,smaller,easier,effort,أقل,أسهل,جهد;distance,farther,longer,fulcrum,مسافة,أبعد,أطول,ارتكاز',mod:'Yes, a smaller effort moves a big load, but over a longer distance.|نعم، جهد أصغر يحرك حملًا كبيرًا لكن عبر مسافة أطول.'});
-x('plants','R',550,'exp','The graph shows plant height after 0, 2, 4 and 6 hours of light a day. What can you conclude? Use numbers.|يبيّن المخطط ارتفاع النبات مع ٠ و٢ و٤ و٦ ساعات ضوء يوميًا. ماذا تستنتج؟ استعن بالأرقام.','Describes without evidence|يصف دون دليل',{img:'chart',kw:'more,longer,increase,taller,أكثر,أطول,يزداد;11,8,5,2,١١,٨,٥',mod:'More light gives taller plants: 11 cm at 6 h vs 2 cm at 0 h.|الضوء الأكثر يعطي نباتًا أطول: ١١ سم عند ٦ ساعات مقابل ٢ سم.'});
-x('plants','A',475,'mcq','The graph shows plant height after 0, 2, 4 and 6 hours of light. Which gave the tallest plant?|يبيّن المخطط ارتفاع النبات بعد ٠ و٢ و٤ و٦ ساعات ضوء. أيها أعطى أطول نبات؟','Reads the wrong bar|يقرأ العمود الخطأ',{img:'chart',o:sp('6 hours;0 hours;2 hours;4 hours|٦ ساعات;٠ ساعة;ساعتان;٤ ساعات')});
-x('plants','A',550,'mcq','Using the graph, how much taller is the 4-hour plant than the 0-hour plant?|اعتمادًا على المخطط، كم يزيد طول نبات ٤ ساعات عن نبات ٠ ساعة؟','Subtracts incorrectly|يخطئ في الطرح',{img:'chart',o:sp('6 cm;8 cm;3 cm;10 cm|٦ سم;٨ سم;٣ سم;١٠ سم')});
+let L='ar', exam=[], showKey=false, P=null, ST=false, TK='pv';
+const $=id=>document.getElementById(id), t=k=>S[L][k]||k, nm=(o,i)=>o[i===undefined?(L=='en'?0:1):i];
 
-const pic=k=>`<div style="font-weight:bold;color:var(--pr);padding:6px;border:1px dashed var(--ln);border-radius:8px;margin:4px 0">[Diagram: ${k}]</div>`;
-const HZ=rs=>rs.map(([id,sh])=>`<g data-r="${id}" fill="rgba(255,255,255,.01)" stroke="none">${sh}</g>`).join('');
-IMG.skel=()=>`<svg viewBox="0 0 200 400" width="160" role="img" style="background:#eaf2ee;border-radius:8px"><rect x="10" y="10" width="180" height="380" fill="none" stroke="#abc"/>${HZ([['skull','<ellipse cx="100" cy="50" rx="35" ry="35"/>'],['ribs','<ellipse cx="100" cy="140" rx="55" ry="50"/>'],['hip','<ellipse cx="100" cy="220" rx="55" ry="30"/>'],['femur','<rect x="60" y="250" width="25" height="100"/><rect x="115" y="250" width="25" height="100"/>']])}<text x="100" y="55" text-anchor="middle" font-size="12">Skull</text><text x="100" y="145" text-anchor="middle" font-size="12">Ribs</text><text x="100" y="225" text-anchor="middle" font-size="12">Hip</text><text x="100" y="300" text-anchor="middle" font-size="12">Leg Bones</text></svg>`;
-['peach','arm','flags','earth','circ1','circ2'].forEach(k=>IMG[k]=()=>pic(k));IMG.circs=()=>pic('circ1')+pic('circ2');
-x('body','K',400,'hot','Diagram: tap the bone that protects the brain.|رسم توضيحي: المس العظم الذي يحمي الدماغ.','Points to the jaw or the neck|يشير إلى الفك أو الرقبة',{img:'skel',ans:'skull'});
-x('body','K',475,'hot','Tap the bones that protect the heart and lungs.|المس العظام التي تحمي القلب والرئتين.','Picks the hip bones|يختار عظام الحوض',{img:'skel',ans:'ribs'});
-x('body','K',475,'hot','Tap the thigh bone (the longest bone in the body).|المس عظمة الفخذ (أطول عظمة في الجسم).','Confuses thigh bone with hip|يخلط بين عظمة الفخذ والحوض',{img:'skel',ans:'femur'});
-x('str','A',475,'mcq','Sofia uses a peach as a model of the Earth. Which part of the peach represents the core?|تستخدم سوفيا خوخة نموذجًا للأرض. أي جزء من الخوخة يمثل اللب؟','Thinks the skin is the core|يظن أن القشرة هي اللب',{img:'peach',o:sp('The stone in the middle;The skin;The juicy flesh;The stalk|النواة في الوسط;القشرة;اللحم العصيري;العنق')});
-x('str','R',625,'mcq','Which is a limitation of the peach model of the Earth?|ما محدودية نموذج الخوخة للأرض؟','Thinks a model must be a perfect copy|يظن أن النموذج نسخة مطابقة',{img:'peach',o:sp('The stone is solid, but the Earth\'s outer core is liquid;A peach is round;A peach has a skin;A peach can be cut open|النواة صلبة بينما اللب الخارجي سائل;الخوخة مستديرة;للخوخة قشرة;يمكن قطع الخوخة')});
-x('str','A',475,'mcq','Imagine digging down from the surface. Which layer do you reach after the crust?|تخيّل أنك تحفر من السطح. أي طبقة تصل إليها بعد القشرة؟','Skips the mantle|يتجاهل الستار',{img:'earth',o:sp('Mantle;Outer core;Inner core;Atmosphere|الستار;اللب الخارجي;اللب الداخلي;الغلاف الجوي')});
-x('sol','A',475,'mcq','Pictures A and B show the same flag, one at midday and one in the late afternoon. Which picture shows midday?|الصورتان A وB للعلم نفسه وقت الظهيرة وفي أواخر النهار. أيهما وقت الظهيرة؟','Thinks the long shadow is at midday|يظن أن الظل الطويل وقت الظهيرة',{img:'flags',o:sp('B, the short shadow;A, the long shadow;Both;Neither|B الظل القصير;A الظل الطويل;كلاهما;لا أحدهما')});
-x('nrg','A',550,'mcq','Circuit 1 has two cells and three lamps. One lamp is removed and the circuit is closed. The two lamps now shine…|الدائرة ١ فيها خليتان وثلاثة مصابيح. أُزيل مصباح وأُغلقت الدائرة. يضيء المصباحان بشكل…','Thinks removing a lamp dims the rest|يظن أن إزالة مصباح تخفت الباقي',{img:'circ1',o:sp('Brighter;Dimmer;The same;Not at all|أكثر سطوعًا;أقل سطوعًا;نفسه;لا يضيئان')});
-x('nrg','K',475,'mcq','In Circuit 2, what does the wooden switch do?|في الدائرة ٢، ماذا يفعل المفتاح الخشبي؟','Thinks a switch makes electricity|يظن أن المفتاح يصنع الكهرباء',{img:'circ2',o:sp('Opens and closes the circuit;Makes electricity;Makes the lamps brighter;Stores energy|يفتح الدائرة ويغلقها;يصنع الكهرباء;يجعل المصابيح أسطع;يخزن الطاقة')});
-x('body','A',475,'mcq','The arm in the picture is lifting. What happens to the muscle on top of the upper arm?|الذراع في الصورة ترتفع. ماذا يحدث للعضلة العلوية في الذراع؟','Thinks muscles push bones|يظن أن العضلات تدفع العظام',{img:'arm',o:sp('It contracts and gets shorter;It relaxes and gets longer;It pushes the bone;It stays the same|تنقبض وتقصر;ترتخي وتطول;تدفع العظم;لا تتغير')});
-x('nrg','R',550,'exp','Both circuits use the same two cells. Circuit 1 has three lamps, Circuit 2 has two. Predict which lamps are brighter and explain why.|الدائرتان تستخدمان الخليتين نفسيهما. الأولى فيها ثلاثة مصابيح والثانية مصباحان. توقّع أيهما أسطع وفسّر.','Thinks more lamps means more light|يظن أن مصابيح أكثر تعني ضوءًا أكثر',{img:'circs',kw:'2,two,second,الثانية,٢;fewer,less,share,energy,أقل,طاقة,تتقاسم',mod:'Circuit 2 is brighter: the cells share their energy between fewer lamps.|الدائرة ٢ أسطع لأن الخلايا توزع طاقتها على مصابيح أقل.'});
-IMG.body=()=>`<svg viewBox="0 0 200 230" width="220" role="img"><rect x="62" y="56" width="76" height="130" rx="20" fill="#f6d9c4" stroke="#555"/><circle cx="100" cy="30" r="24" fill="#f6d9c4" stroke="#555"/>${R('brain','<ellipse cx="100" cy="24" rx="15" ry="11"/>','#e8a0b8')}${R('lungs','<ellipse cx="82" cy="98" rx="15" ry="26"/><ellipse cx="118" cy="98" rx="15" ry="26"/>','#9ec9e8')}${R('heart','<circle cx="104" cy="108" r="10"/>','#d94b4b')}${R('stomach','<ellipse cx="112" cy="150" rx="17" ry="11"/>','#e8c07a')}<rect x="70" y="186" width="20" height="40" fill="#f6d9c4" stroke="#555"/><rect x="110" y="186" width="20" height="40" fill="#f6d9c4" stroke="#555"/></svg>`;
-IMG.earthh=()=>IMG.earth();
-B.forEach(q=>{if(q.img=='plant'||q.img=='chart')q.off=1;if(q.img=='earth'&&q.ty=='hot')q.img='earthh'});
-
-const NM=()=>{try{return localStorage.getItem('sq4_name')||''}catch(_){return''}};
-const code=d=>btoa(unescape(encodeURIComponent(JSON.stringify(d))));
-
-function score(e){const q=e.q,a=e.a,ty=q.ty||'mcq';
-if(ty=='mcq')return a.v===0?1:0;
-if(ty=='fill'){const nz=s=>(s||'').toLowerCase().trim().replace(/^ال/,'');return q.acc.map(nz).includes(nz(a.v))?1:0}
-if(ty=='hot')return a.v==q.ans?1:0;
-if(ty=='drag'){const m=a.m||{};return q.it.filter((y,j)=>m[j]===y[1]).length/q.it.length}
-if(ty=='lab')return LAB[q.lab].ok(labFill(e))?1:0;
-const s=(a.v||'').toLowerCase();return q.kw.filter(g=>g.some(w=>s.includes(w))).length/q.kw.length}
-
-async function send(){
-  const d=P.res.doc;
-  P.res.st='fail'; // Standalone mode without backend sign-in
-  sentUI();
-}
-
-function sentUI(){
-  const s=$('sent');if(!s||!ST)return;
-  const cd=code(P.res.doc);
-  const repText=encodeURIComponent((L=='ar'?'نتيجة اختبار العلوم: ':'Science Quiz Result: ')+P.res.doc.name+' - '+P.res.doc.pct+'% (K:'+P.res.doc.K+' A:'+P.res.doc.A+' R:'+P.res.doc.R+')\nCode: '+cd);
-  s.innerHTML=`<div class="fb good" style="background:#eaf6ee;color:#14532d;border:1px solid #95d5a7">
-    <b>${L=='ar'?'اكتمل الاختبار بنجاح!':'Quiz completed successfully!'}</b><br>
-    ${L=='ar'?'انسخ هذا الرمز أو شارك النتيجة مع معلمك:':'Copy this result code or share it with your teacher:'}
-    <input type="text" readonly onclick="this.select()" value="${cd}" style="margin:6px 0;font-size:13px">
-    <div style="display:flex;gap:8px;margin-top:4px">
-      <button class="btn" style="flex:1" onclick="navigator.clipboard.writeText('${cd}');alert('${L=='ar'?'تم نسخ الرمز!':'Result code copied!'}')">${L=='ar'?'نسخ الرمز':'Copy Code'}</button>
-      <a class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;flex:1" href="https://api.whatsapp.com/send?text=${repText}" target="_blank">WhatsApp</a>
-    </div>
-  </div>`;
-}
-
-let RS=[],RT=null;
-const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-
-function results(){
-  $('out').innerHTML=`<button class="btn alt" onclick="render()">${t('back')}</button><h2>${t('results')}</h2><div id="rl"></div>`;
-  drawRes();
-}
-
-function drawRes(){
-  const o=$('rl'),tks=[...new Set(RS.map(r=>r.tk))];
-  let h=`<p><b>${t('imp')}</b><input type="text" id="ic" placeholder="Paste student code here..."><button class="btn alt" id="ib">${t('impb')}</button></p>`;
-  if(!RS.length){
-    h+=`<p>${t('nores')}</p>`;
-  } else {
-    if(!tks.includes(RT))RT=tks[0];
-    const rs=RT?RS.filter(r=>r.tk==RT):RS,by={};
-    rs.forEach(r=>(by[r.name]=by[r.name]||[]).push(r));
-    const av=k=>{const v=rs.map(r=>r[k]).filter(y=>y>=0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):null};
-    h+=`<p><b>${t('cls')}</b> <select id="rt">${tks.map(k=>`<option ${k==RT?'selected':''}>${k}</option>`).join('')}</select></p><h3>${t('avg')}</h3>`+Object.keys(G).map(g=>{const a=av(g);return a===null?'':`<div>${nm(G[g])}: ${a}%<div class="bar"><span style="background:${G[g][2]};width:${Math.max(a,8)}%">${a}%</span></div></div>`}).join('');
-    const wk=Object.keys(G).map(g=>[g,av(g)]).filter(y=>y[1]!==null).sort((a,b)=>a[1]-b[1])[0];
-    if(wk)h+=`<div class="note">${t('weak')}: <b>${nm(G[wk[0]])}</b> (${wk[1]}%)</div>`;
-    h+=`<h3>${t('students')}</h3><table style="width:100%;border-collapse:collapse">`+Object.entries(by).map(([n,a])=>{const l=a.sort((x1,x2)=>x1.at-x2.at),last=l[l.length-1];return `<tr style="border-bottom:1px solid var(--ln)"><td>${esc(n)}</td><td>${t('att')}: ${l.length}</td><td>${t('best')}: ${Math.max(...l.map(r=>r.pct))}%</td><td>K ${last.K<0?'-':last.K} · A ${last.A<0?'-':last.A} · R ${last.R<0?'-':last.R}</td></tr>`}).join('')+`</table>`;
+function shuffle(a){
+  a=[...a];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
   }
-  o.innerHTML=h;
-  $('ib').onclick=()=>{
-    try{
-      const d=JSON.parse(decodeURIComponent(escape(atob($('ic').value.trim()))));
-      d.imp=true;RS.push(d);drawRes();
-    }catch(_){alert('Invalid code');$('ic').value=''}
-  };
-  const rt=$('rt');if(rt)rt.onchange=()=>{RT=rt.value;drawRes()};
+  return a;
 }
 
-const S2={en:{share:'Send to students',guide:'Question types',copy:'Copy link',link:'Student link (No sign-in required)',attempts:'Previous attempts',start:'Start attempt',again:'Try again (new shuffle)',shufnote:'Questions and choices are reshuffled automatically on each attempt.',check:'Check',correct:'Correct!',wrong:'Not yet.',partial:'Partly correct:',model:'Model answer',teach:'Written answers are checked by keywords.',qtypes:'Question types',scoring:'Scoring',how:'What the student does',fit:'Best for',hint:'Tap a card then a box, or drag it.'},
-ar:{share:'إرسال للطلبة',guide:'أنواع الأسئلة',copy:'نسخ الرابط',link:'رابط الطالب (يفتح مباشرة بدون تسجيل دخول)',attempts:'المحاولات السابقة',start:'ابدأ المحاولة',again:'حاول مرة أخرى (ترتيب جديد)',shufnote:'يُعاد ترتيب الأسئلة والخيارات عشوائيًا في كل محاولة.',check:'تحقق',correct:'صحيح!',wrong:'ليس بعد.',partial:'صحيح جزئيًا:',model:'الإجابة النموذجية',teach:'تُفحص الإجابات الكتابية بالكلمات المفتاحية.',qtypes:'أنواع الأسئلة',scoring:'التصحيح',how:'ماذا يفعل الطالب',fit:'الأنسب لـ',hint:'المس البطاقة ثم المربع، أو اسحبها.'}};
-Object.assign(S2.en,{name:'Your name',results:'Results',nores:'No results entered yet.',nodb:'Result storage is running in direct offline mode.',sentok:'Your result was recorded.',sentfail:'Share your result with your teacher:',sharehelp:'Send this link directly to students via WhatsApp or LMS. Students can answer immediately without creating any account.',imp:'Paste a student result code',impb:'Import',students:'Students',att:'Attempts',best:'Best',avg:'Class average',weak:'Needs practice',items:'Question analysis',cls:'Exam'});
-Object.assign(S2.ar,{name:'اسمك الثلاثي',results:'النتائج',nores:'لا توجد نتائج مسجلة حتى الآن.',nodb:'يعمل الاختبار بالنمط المباشر بدون حسابات.',sentok:'تم تسجيل نتيجتك بنجاح.',sentfail:'شارك نتيجتك مع معلمك:',sharehelp:'أرسل هذا الرابط مباشرة للطلبة عبر الواتساب أو المنصة التعليمية. يفتح الاختبار فورًا دون تسجيل دخول أو حساب.',imp:'الصق رمز نتيجة طالب',impb:'استيراد',students:'الطلبة',att:'المحاولات',best:'الأفضل',avg:'متوسط الصف',weak:'يحتاج تدريبًا',items:'تحليل الأسئلة',cls:'الاختبار'});
+function tags(q){
+  return `<span class="tg" style="background:${C[q.c][2]}">${nm(C[q.c])}</span>
+          <span class="tg" style="background:${G[q.g][2]}">${nm(G[q.g])}</span>
+          <span class="tg" style="background:#555">Benchmark: ${q.b}</span>`;
+}
 
-function typesUI(){const ck={};document.querySelectorAll('[data-ty]').forEach(c=>ck[c.dataset.ty]=c.checked);$('types').innerHTML=`<h3>${t('qtypes')}</h3>`+Object.keys(TY).map(k=>`<label class="o"><input type="checkbox" data-ty="${k}" ${ck[k]===false?'':'checked'}> ${tn(k,0)}</label>`).join('')}
-function guide(){$('out').innerHTML=`<button class="btn alt" onclick="render()">${t('back')}</button><h2>${t('guide')}</h2>`+Object.keys(TY).map(k=>`<div class="q"><b>${tn(k,0)}</b> <span class="tg" style="background:#8a5a00">${B.filter(q=>(q.ty||'mcq')==k).length}</span><p><b>${t('how')}:</b> ${tn(k,1)}</p><div class="k" style="display:block"><b>${t('scoring')}:</b> ${tn(k,2)}<br><b>${t('fit')}:</b> ${tn(k,3)}</div></div>`).join('')}
+function ui(){
+  document.documentElement.lang=L;
+  document.documentElement.dir=L=='ar'?'rtl':'ltr';
+  $('ttl').textContent=t('ttl');$('sub').textContent=t('sub');
+  $('lang').textContent=t('lang');$('h_scope').textContent=t('scope');
+  $('h_len').textContent=t('len');$('h_skill').textContent=t('skill');
+  $('gen').textContent=t('gen');
 
-function prevX(q,i){const ty=q.ty||'mcq';let b='',k='';if(q.img)b+=IMG[q.img]();
-if(ty=='mcq'){b+=`<ol>${nm(q.o).map((o,j)=>`<li class="${showKey&&j==0?'ok':''}">${o}</li>`).join('')}</ol>`;k=nm(q.o)[0]}
-if(ty=='fill')k=nm(q.mod);if(ty=='hot'){b+=IMG[q.img]();k=q.ans}
-if(ty=='drag'){b+=`<p>${nm(q.z).join(' · ')}</p>`;k=q.it.map(y=>y[0][I2()]+' → '+nm(q.z)[y[1]]).join(' ; ')}
-if(ty=='lab')k=nm(q.mod);if(ty=='exp')k=nm(q.mod)+' ['+q.kw.map(g=>g[0]).join(' + ')+']';
-return `<div class="q"><div>${tags(q)}</div><p><b>${i+1}.</b> ${nm(q.q)}</p>${b}<div class="k"><b>${t('key')}:</b> ${k}<br><b>${t('mis')}:</b> ${nm(q.m)} · ${nm(T[q.t].slice(1))}</div></div>`}
+  let h=`<label class="o"><input type="checkbox" id="all" checked> <b>${t('sel')}</b></label>`;
+  for(const c in C){
+    h+=`<div class="grp"><i style="background:${C[c][2]}"></i>${nm(C[c])}</div>`;
+    for(const k in T) if(T[k][0]==c){
+      h+=`<label class="o"><input type="checkbox" data-t="${k}" checked> ${nm(T[k].slice(1))}</label>`;
+    }
+  }
+  $('topics').innerHTML=h;
+  $('all').onchange=e=>document.querySelectorAll('[data-t]').forEach(x=>x.checked=e.target.checked);
+
+  $('skills').innerHTML=`
+    <label class="o"><input type="radio" name="sk" value="bal" checked> ${t('bal')}</label>
+    <label class="o"><input type="radio" name="sk" value="K"> ${nm(G.K)} (Knowing)</label>
+    <label class="o"><input type="radio" name="sk" value="A"> ${nm(G.A)} (Applying)</label>
+    <label class="o"><input type="radio" name="sk" value="R"> ${nm(G.R)} (Reasoning)</label>
+  `;
+
+  render();
+}
+
+function build(){
+  const sel=[...document.querySelectorAll('[data-t]:checked')].map(x=>x.dataset.t);
+  if(!sel.length){
+    alert(L=='ar'?'يرجى اختيار موضوع واحد على الأقل':'Please select at least one topic');
+    return;
+  }
+  const n = parseInt($('n').value) || 10;
+  const pool = B.filter(q => sel.includes(q.t));
+  
+  if(!pool.length){
+    alert(L=='ar'?'لا توجد أسئلة متوفرة للمواضيع المختارة':'No questions available for selected topics');
+    return;
+  }
+
+  const sk = document.querySelector('input[name=sk]:checked')?.value || 'bal';
+  let chosen = [];
+  
+  if(sk === 'bal'){
+    chosen = shuffle(pool).slice(0, n);
+  } else {
+    const focusItems = shuffle(pool.filter(q => q.g === sk));
+    const otherItems = shuffle(pool.filter(q => q.g !== sk));
+    chosen = [...focusItems, ...otherItems].slice(0, n);
+  }
+
+  exam = chosen;
+  render();
+}
+
+function render(){
+  const o=$('out');
+  if(ST){
+    if(P && P.show) P.show();
+    return;
+  }
+  if(!exam.length){
+    o.innerHTML=`<div class="note">${t('empty')}</div>`;
+    return;
+  }
+
+  let h=`<div class="row noprint">
+    <button class="btn" id="stu">${t('stu')}</button>
+    <button class="btn alt" id="shr">${t('share')}</button>
+    <label class="o"><input type="checkbox" id="sk" ${showKey?'checked':''}> ${t('ans')}</label>
+  </div>
+  <div id="shbox"></div>
+  <div class="${showKey?'show':''}">`;
+
+  exam.forEach((q,i)=>{
+    const op = nm(q.o);
+    h+=`<div class="q">
+      <div>${tags(q)}</div>
+      <p style="font-size:17px;font-weight:600;margin:8px 0">${i+1}. ${nm(q.q)}</p>
+      <ol type="${L=='ar'?'أ':'A'}">
+        ${op.map((x,j)=>`<li class="${showKey&&j==0?'ok':''}">${x}</li>`).join('')}
+      </ol>
+      <div class="k">
+        <b>${t('key')}:</b> ${op[0]}<br>
+        <b>${t('mis')}:</b> ${nm(q.m)}
+      </div>
+    </div>`;
+  });
+
+  o.innerHTML=h+'</div>';
+
+  $('stu').onclick=()=>{ TK='pv'; play(exam); };
+  $('shr').onclick=share;
+  $('sk').onchange=e=>{ showKey=e.target.checked; render(); };
+}
 
 function share(){
-  const tk=(L=='ar'?'a':'e')+'-'+exam.map(q=>q.id.toString(36)).join('.');
-  const u = getBaseUrl() + '#' + tk;
-  $('shbox').innerHTML=`<div class="note" style="background:var(--bg);color:var(--tx)">
-    <b>${t('link')}</b>
-    <input type="text" readonly id="lk" value="${u}" onclick="this.select()" style="font-weight:bold;margin:8px 0">
-    <div style="display:flex;gap:8px">
-      <button class="btn" id="cp">${t('copy')}</button>
-      <a class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center" href="https://api.whatsapp.com/send?text=${encodeURIComponent(u)}" target="_blank">WhatsApp</a>
+  const tk = (L=='ar'?'a':'e') + '-' + exam.map(q=>q.id.toString(36)).join('.');
+  const base = window.location.href.split('#')[0];
+  const url = base + '#' + tk;
+  $('shbox').innerHTML=`
+    <div class="note" style="background:#eaf2ee;color:#14532d;border:1px solid var(--ln);padding:14px;border-radius:10px;margin-top:10px">
+      <b>${L=='ar'?'رابط الاختبار للطلبة (يفتح مباشرة بدون تسجيل دخول):':'Direct Student Exam Link (No sign-in required):'}</b>
+      <input type="text" readonly id="lk" value="${url}" onclick="this.select()" style="margin:8px 0;font-weight:bold">
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="cp">${t('copy')}</button>
+        <a class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center" href="https://api.whatsapp.com/send?text=${encodeURIComponent(url)}" target="_blank">WhatsApp</a>
+      </div>
     </div>
-    <p style="margin-top:10px">${t('sharehelp')}</p>
-  </div>`;
+  `;
   $('cp').onclick=()=>{
-    $('lk').select();
-    try{navigator.clipboard.writeText(u);alert(L=='ar'?'تم نسخ الرابط!':'Link copied!')}catch(_){}
+    navigator.clipboard.writeText(url);
+    alert(L=='ar'?'تم نسخ الرابط!':'Link copied to clipboard!');
   };
 }
 
-function hist(){try{return JSON.parse(localStorage.getItem('sq4_'+TK)||'[]')}catch(_){return[]}}
-const nq=q=>q.ty=='drag'?q.it.length:(q.o?q.o[0].length:0);
+function play(src){
+  P={src, list: shuffle(src).map(q=>({q, p: shuffle([0,1,2,3]), a: null})), i:0, sc:[]};
+  intro();
+}
 
-function play(src){P={src,show:intro};intro()}
 function intro(){
-  const h=hist();P.show=intro;
-  $('out').innerHTML=(ST?'':`<button class="btn alt" onclick="render()">${t('back')}</button>`)+
-  `<h2>${t('ttl')}</h2><p>${P.src.length} ${t('q')}</p>`+
-  (h.length?`<h3>${t('attempts')}</h3>`+h.map((a,i)=>`<div>#${i+1}: <b>${a.p}%</b> — K ${a.K} · A ${a.A} · R ${a.R}</div>`).join(''):'')+
-  `${ST?`<p><label>${t('name')} <input type="text" id="nm" placeholder="${L=='ar'?'اكتب اسمك هنا':'Enter name...'}" value="${NM()}"></label></p>`:''}`+
-  `<p><button class="btn" id="go">${t('start')} #${h.length+1}</button></p>`+
-  `<p class="note">${t('shufnote')}</p>`;
-  $('go').onclick=()=>{
-    if(ST){
-      const v=$('nm').value.trim();
-      if(!v){$('nm').focus();alert(L=='ar'?'يرجى كتابة الاسم للبدء':'Please enter your name');return}
-      try{localStorage.setItem('sq4_name',v)}catch(_){}
+  $('out').innerHTML=`
+    <h2>${nm(P.src[0].q).length ? t('ttl') : ''}</h2>
+    <p style="font-size:18px">${L=='ar'?'عدد أسئلة الاختبار:':'Total questions:'} <b>${P.src.length}</b></p>
+    <p><button class="btn" id="startBtn" style="font-size:18px;padding:12px 24px">${L=='ar'?'ابدأ الاختبار الآن':'Start Quiz Now'}</button></p>
+  `;
+  $('startBtn').onclick=()=>{ showQ(); };
+}
+
+function showQ(){
+  const e = P.list[P.i];
+  const q = e.q;
+  const isLast = P.i === P.list.length - 1;
+
+  $('out').innerHTML=`
+    <div>${tags(q)}</div>
+    <p style="font-size:15px;color:var(--mu);margin-top:6px">${t('q')} ${P.i+1} / ${P.list.length}</p>
+    <p style="font-size:19px;font-weight:bold;margin:10px 0">${nm(q.q)}</p>
+    <div id="opts">
+      ${e.p.map(j => `
+        <button class="opt ${e.a === j ? 'sel':''}" data-j="${j}" ${e.done ? 'disabled':''}>
+          ${nm(q.o)[j]}
+        </button>
+      `).join('')}
+    </div>
+    <div id="fb"></div>
+    <div style="margin-top:16px">
+      <button class="btn" id="ckBtn" ${e.a === null ? 'disabled':''}>
+        ${e.done ? (isLast ? t('fin') : t('next')) : t('check')}
+      </button>
+    </div>
+  `;
+
+  document.querySelectorAll('.opt').forEach(btn => {
+    btn.onclick = () => {
+      if(e.done) return;
+      document.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      e.a = parseInt(btn.dataset.j);
+      $('ckBtn').disabled = false;
+    };
+  });
+
+  if(e.done){
+    showFeedback(e);
+  }
+
+  $('ckBtn').onclick = () => {
+    if(!e.done){
+      e.done = true;
+      e.isCorrect = (e.a === 0); // 0 is always the correct option in B bank
+      P.sc.push(e.isCorrect ? 1 : 0);
+      showQ();
+    } else {
+      if(isLast){
+        showResult();
+      } else {
+        P.i++;
+        showQ();
+      }
     }
-    begin();
   };
 }
 
-function begin(){P.list=shuffle(P.src).map(q=>({q,p:shuffle([...Array(nq(q)).keys()]),a:{}}));P.i=0;P.sc=[];P.show=showQ;showQ()}
-const chip=(e,j)=>`<span class="chip ${e.a.s===j?'sel':''}" draggable="true" data-j="${j}">${e.q.it[j][0][I2()]}</span>`;
+function showFeedback(e){
+  const isRight = e.isCorrect;
+  $('fb').innerHTML=`
+    <div class="fb ${isRight ? 'good' : 'bad'}">
+      <b>${isRight ? (L=='ar'?'إجابة صحيحة وممتازة!':'Correct answer!') : (L=='ar'?'إجابة غير صحيحة':'Not quite right.')}</b><br>
+      ${!isRight ? `<b>${t('key')}:</b> ${nm(e.q.o)[0]}<br><b>${t('mis')}:</b> ${nm(e.q.m)}` : ''}
+    </div>
+  `;
+}
 
-function body(e){const q=e.q,a=e.a,ty=q.ty||'mcq',d=e.done?'disabled':'';
-if(ty=='mcq')return e.p.map(j=>`<button class="opt ${a.v===j?'sel':''}" data-j="${j}" ${d}>${nm(q.o)[j]}</button>`).join('');
-if(ty=='fill')return `<input type="text" id="fi" value="${a.v||''}" ${d}>`;
-if(ty=='exp')return `<textarea id="fi" rows="4" ${d}>${a.v||''}</textarea>`;
-if(ty=='hot')return IMG[q.img]();
-if(ty=='drag'){const m=a.m||(a.m={});return `<p class="note">${t('hint')}</p><div>${e.p.filter(j=>m[j]===undefined).map(j=>chip(e,j)).join('')}</div>`+nm(q.z).map((z,k)=>`<div class="zn" data-z="${k}"><b>${z}</b><br>${e.p.filter(j=>m[j]===k).map(j=>chip(e,j)).join('')}</div>`).join('')}
-if(ty=='lab'){const l=LAB[q.lab],v=labFill(e);return l.c.map(c=>{const val=v[c.k],n=c.n[I2()];return c.o?`<label class="o">${n} <select data-k="${c.k}" ${d}>${c.o[I2()].map((y,j)=>`<option value="${j}" ${val==j?'selected':''}>${y}</option>`).join('')}</select></label>`:`<label class="o">${n}: <b>${val}</b> <input type="range" data-k="${c.k}" min="${c.min}" max="${c.max}" value="${val}" ${d}></label>`}).join('')+`<div class="note" id="lv" style="background:var(--bg);color:var(--tx)">${l.v(v)}</div>`}}
-
-function labFill(e){const v=e.a.v||(e.a.v={});LAB[e.q.lab].c.forEach(c=>{if(v[c.k]===undefined)v[c.k]=c.min||0});return v}
-
-function wire(e){const q=e.q,a=e.a,ty=q.ty||'mcq',qa=$('qa');
-if(ty=='hot'){const r=qa.querySelector('[data-r="'+a.v+'"]');r&&r.classList.add('pk')}if(e.done)return;
-if(ty=='mcq')qa.onclick=ev=>{const b=ev.target.closest('.opt');if(!b)return;a.v=+b.dataset.j;qa.querySelectorAll('.opt').forEach(y=>y.classList.toggle('sel',y===b))};
-if(ty=='fill'||ty=='exp')$('fi').oninput=ev=>a.v=ev.target.value;
-if(ty=='hot')qa.onclick=ev=>{const g=ev.target.closest('[data-r]');if(!g)return;a.v=g.dataset.r;qa.querySelectorAll('[data-r]').forEach(y=>y.classList.toggle('pk',y===g))};
-if(ty=='lab')qa.oninput=ev=>{const k=ev.target.dataset.k;if(!k)return;a.v[k]=+ev.target.value;$('lv').textContent=LAB[q.lab].v(a.v);if(ev.target.type=='range')ev.target.previousElementSibling.textContent=ev.target.value};
-if(ty=='drag'){a.m=a.m||{};const rr=()=>{qa.innerHTML=body(e)},put=(j,k)=>{const m=a.m;if(k===undefined)delete m[j];else{if(q.ord)for(const y in m)if(m[y]===k)delete m[y];m[j]=k}a.s=undefined;rr()};
-qa.onclick=ev=>{const c=ev.target.closest('.chip'),z=ev.target.closest('.zn');if(c){const j=+c.dataset.j;if(a.m[j]!==undefined)put(j);else{a.s=a.s===j?undefined:j;rr()}}else if(z&&a.s!==undefined)put(a.s,+z.dataset.z)};
-qa.ondragstart=ev=>ev.dataTransfer.setData('text',ev.target.dataset.j);qa.ondragover=ev=>ev.preventDefault();qa.ondrop=ev=>{ev.preventDefault();const z=ev.target.closest('.zn');if(z)put(+ev.dataTransfer.getData('text'),+z.dataset.z)}}}
-
-function fbk(e){const s=e.s,q=e.q,ty=q.ty||'mcq',ans=ty=='mcq'?nm(q.o)[0]:(q.mod?nm(q.mod):'');$('fb').innerHTML=`<div class="fb ${s==1?'good':'bad'}"><b>${s==1?t('correct'):s>0?t('partial')+' '+Math.round(s*100)+'%':t('wrong')}</b>${s<1||ty=='exp'?`<br>${t('model')}: ${ans}`:''}${s<1?`<br>${t('mis')}: ${nm(q.m)}`:''}</div>`}
-
-function showQ(){const e=P.list[P.i],q=e.q,last=P.i==P.list.length-1;
-$('out').innerHTML=`<div>${tags(q)}</div><p><b>${t('q')} ${P.i+1}/${P.list.length}</b></p><p style="font-size:18px">${nm(q.q)}</p>${q.img&&q.ty!='hot'?IMG[q.img]():''}<div id="qa">${body(e)}</div><div id="fb"></div><button class="btn" id="ck">${e.done?(last?t('fin'):t('next')):t('check')}</button>`;wire(e);if(e.done)fbk(e);
-$('ck').onclick=()=>{if(!e.done){e.s=score(e);e.done=true;P.sc.push({g:q.g,s:e.s,id:q.id});showQ()}else{P.i++;P.i<P.list.length?showQ():finish()}}}
-
-function finish(){const by={K:[0,0],A:[0,0],R:[0,0]};P.sc.forEach(y=>{by[y.g][0]+=y.s;by[y.g][1]++});const pc=g=>by[g][1]?Math.round(by[g][0]/by[g][1]*100):null,tot=Math.round(P.sc.reduce((s,y)=>s+y.s,0)/P.sc.length*100),h=hist();h.push({p:tot,K:pc('K')??'-',A:pc('A')??'-',R:pc('R')??'-'});try{localStorage.setItem('sq4_'+TK,JSON.stringify(h))}catch(_){}P.res={by,pc,tot,n:h.length,doc:{tk:TK,name:NM()||'Student',pct:tot,K:pc('K')??-1,A:pc('A')??-1,R:pc('R')??-1,at:Date.now(),it:JSON.stringify(P.sc.map(y=>[y.id,Math.round(y.s*100)/100]))},st:''};P.show=res;res();if(ST)send()}
-
-function res(){const{by,pc,tot,n}=P.res;$('out').innerHTML=`<h2>${t('res')}: ${tot}% <small>(#${n})</small></h2>`+Object.keys(G).filter(g=>by[g][1]).map(g=>{const p=pc(g);return `<div>${nm(G[g])}: ${p}%<div class="bar"><span style="background:${G[g][2]};width:${Math.max(p,8)}%">${p}%</span></div><div class="note" style="${p>=70?'background:#dff3e6;color:#14532d':''}">${p>=70?t('ok'):t('fix')}</div></div>`}).join('')+`<div id="sent"></div><button class="btn" id="again">${t('again')}</button>`;$('again').onclick=intro;sentUI()}
+function showResult(){
+  const score = P.sc.reduce((a,b)=>a+b, 0);
+  const pct = Math.round((score / P.sc.length) * 100);
+  
+  $('out').innerHTML=`
+    <h2>${L=='ar'?'نتيجة الاختبار':'Quiz Results'}</h2>
+    <div class="big" style="font-size:42px;margin:12px 0">${pct}%</div>
+    <p style="font-size:18px">${L=='ar'?'أجبت بشكل صحيح على:':'Score:'} <b>${score}</b> ${L=='ar'?'من':'out of'} <b>${P.sc.length}</b></p>
+    <div class="note" style="${pct >= 70 ? 'background:#dff3e6;color:#14532d' : ''}">
+      ${pct >= 70 ? (L=='ar'?'مستوى ممتاز ومتمكن جدًا!':'Excellent mastery of the material!') : (L=='ar'?'تحتاج إلى مراجعة بعض المفاهيم العلمية':'Good effort! Practice more on the missed concepts.')}
+    </div>
+    <p style="margin-top:20px">
+      <button class="btn" onclick="play(P.src)">${t('again')}</button>
+      ${!ST ? `<button class="btn alt" onclick="render()" style="margin-inline-start:8px">${L=='ar'?'العودة':'Back'}</button>` : ''}
+    </p>
+  `;
+}
 
 function boot(){
   const h=location.hash.slice(1);
-  if(!/^[ea]-/.test(h))return;
-  const src=h.slice(2).split('.').map(y=>B[parseInt(y,36)]).filter(Boolean);
-  if(!src.length)return;
-  L=h[0]=='a'?'ar':'en';
-  ST=true;
-  TK=h;
+  if(!/^[ea]-/.test(h)) return;
+  const ids = h.slice(2).split('.').map(y=>parseInt(y,36)).filter(n=>!isNaN(n));
+  const src = ids.map(id => B.find(item => item.id === id)).filter(Boolean);
+  if(!src.length) return;
+
+  L = h[0] === 'a' ? 'ar' : 'en';
+  ST = true;
   document.body.classList.add('st');
   ui();
   play(src);
 }
 
-setTimeout(boot,0);
-setTimeout(()=>{if(!ST)boot()},400);
-addEventListener('hashchange',()=>{if(!ST)boot()});
+$('lang').onclick=()=>{ L = (L=='en'?'ar':'en'); ui(); };
+$('gen').onclick=build;
+$('n').oninput=e=>$('nv').textContent=e.target.value;
 
-const S={en:{ttl:'eTIMSS SciQuest 4',sub:'Grade 4 Science · TIMSS exam builder for teachers',lang:'العربية',scope:'1. Topics',len:'2. Number of questions',skill:'3. Skill to improve',gen:'Build exam',bal:'Balanced TIMSS (40 / 40 / 20)',foc:'Focus on ',sel:'Select all',empty:'Pick topics and press Build exam.',content:'Content domain',cog:'Cognitive domain',target:'target',actual:'actual',ans:'Show answer key',print:'Print teacher view',stu:'Start student mode',short:'Bank has too few matching items; nearest matches were used.',mis:'Misconception',key:'Answer',next:'Next',fin:'Finish',res:'Results by skill',fix:'Re-teach: review this skill with a concrete example, then retry.',ok:'Strong',q:'Question',bm:'Benchmark',back:'Back to dashboard',few:'Select at least one topic.'},
-ar:{ttl:'eTIMSS SciQuest 4',sub:'علوم الصف الرابع · منشئ اختبارات TIMSS للمعلم',lang:'English',scope:'١. المواضيع',len:'٢. عدد الأسئلة',skill:'٣. المهارة المراد تحسينها',gen:'إنشاء الاختبار',bal:'متوازن حسب TIMSS (٤٠ / ٤٠ / ٢٠)',foc:'التركيز على ',sel:'تحديد الكل',empty:'اختر المواضيع ثم اضغط إنشاء الاختبار.',content:'المجال المعرفي (المحتوى)',cog:'المجال الإدراكي',target:'المستهدف',actual:'الفعلي',ans:'إظهار مفتاح الإجابة',print:'طباعة نسخة المعلم',stu:'بدء وضع الطالب',short:'عدد الأسئلة المطابقة في البنك غير كافٍ؛ استُخدمت أقرب البدائل.',mis:'التصور الخاطئ',key:'الإجابة',next:'التالي',fin:'إنهاء',res:'النتائج حسب المهارة',fix:'إعادة التعليم: راجع هذه المهارة بمثال محسوس ثم أعد المحاولة.',ok:'متمكن',q:'سؤال',bm:'المستوى المعياري',back:'العودة للوحة',few:'اختر موضوعًا واحدًا على الأقل.'}};
-let L='en',focus='bal',exam=[],showKey=false;
-const $=id=>document.getElementById(id),t=k=>S[L][k]||S2[L][k],nm=(o,i)=>o[i===undefined?(L=='en'?0:1):i];
-function appor(total,w){const raw=Object.entries(w).map(([k,v])=>[k,total*v/100]);const r={};let u=0;raw.forEach(([k,v])=>{r[k]=Math.floor(v);u+=r[k]});raw.sort((a,b)=>(b[1]%1)-(a[1]%1));for(let i=0;u<total;i++,u++)r[raw[i%raw.length][0]]++;return r}
-function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
-
-function ui(){document.documentElement.lang=L;document.documentElement.dir=L=='ar'?'rtl':'ltr';
-$('ttl').textContent=t('ttl');$('sub').textContent=t('sub');$('lang').textContent=t('lang');$('guide').textContent=t('guide');$('resbtn').textContent=t('results');$('h_scope').textContent=t('scope');$('h_len').textContent=t('len');$('h_skill').textContent=t('skill');$('gen').textContent=t('gen');
-const ck=[...document.querySelectorAll('#topics input[data-t]')].map(x=>x.checked);
-let h=`<label class="o"><input type="checkbox" id="all" ${ck.length?'':'checked'}> <b>${t('sel')}</b></label>`,i=0;
-for(const c in C){h+=`<div class="grp"><i style="background:${C[c][2]}"></i>${nm(C[c])} (${C[c][3]}%)</div>`;for(const k in T)if(T[k][0]==c){h+=`<label class="o"><input type="checkbox" data-t="${k}" ${ck.length?(ck[i]?'checked':''):'checked'}> ${nm(T[k].slice(1))}</label>`;i++}}
-$('topics').innerHTML=h;typesUI();$('all').onchange=e=>document.querySelectorAll('[data-t]').forEach(x=>x.checked=e.target.checked);
-$('skills').innerHTML=[['bal',t('bal')],...Object.keys(G).map(g=>[g,t('foc')+nm(G[g])])].map(([v,l])=>`<label class="o"><input type="radio" name="sk" value="${v}" ${v==focus?'checked':''}> ${l}</label>`).join('');
-document.querySelectorAll('[name=sk]').forEach(x=>x.onchange=()=>focus=x.value);render()}
-
-function build(){const sel=[...document.querySelectorAll('[data-t]:checked')].map(x=>x.dataset.t);if(!sel.length){alert(t('few'));return}
-const tsel=[...document.querySelectorAll('[data-ty]:checked')].map(c=>c.dataset.ty),n=+$('n').value,pool=B.filter(q=>sel.includes(q.t)&&tsel.includes(q.ty||'mcq')&&!q.off);
-const cw={};let tot=0;for(const c in C){const has=sel.some(k=>T[k][0]==c);if(has){cw[c]=C[c][3];tot+=cw[c]}}for(const c in cw)cw[c]=cw[c]*100/tot;
-const gw=focus=='bal'?{K:40,A:40,R:20}:{K:25,A:25,R:25,[focus]:50};if(focus!='bal'){for(const g in gw)if(g!=focus)gw[g]=25}
-const cT=appor(n,cw),gT=appor(n,gw);let picked=[],left=shuffle(pool),short=false;
-const cc={...cT};const take=(f)=>{const i=left.findIndex(f);if(i<0)return false;picked.push(left.splice(i,1)[0]);return true};
-for(const g of ['R','A','K']){for(let k=0;k<gT[g];k++){const c=Object.keys(cc).sort((a,b)=>cc[b]-cc[a]).find(x=>cc[x]>0&&left.some(q=>q.c==c&&q.g==g));
-if(c){take(q=>q.c==c&&q.g==g);cc[c]--}else if(take(q=>q.g==g)){}else short=true}}
-while(picked.length<n&&left.length){take(()=>true);short=true}
-const order={K:0,A:1,R:2};exam=picked.sort((a,b)=>order[a.g]-order[b.g]||a.b-b.b);exam.short=short||picked.length<n;exam.n=n;render()}
-
-function bars(obj,src,tg,total){const keys=Object.keys(obj);return keys.map(k=>`<div style="font-size:13px">${nm(obj[k])}: ${t('actual')} ${exam.filter(q=>q[src]==k).length} / ${t('target')} ${Math.round(exam.n*obj[k][3]/(tg(keys)||100))}</div><div class="bar">${exam.filter(q=>q[src]==k).length?`<span style="background:${obj[k][2]};width:${exam.filter(q=>q[src]==k).length/exam.length*100}%">${Math.round(exam.filter(q=>q[src]==k).length/exam.length*100)}%</span>`:''}</div>`).join('')}
-function tags(q){return `<span class="tg" style="background:${C[q.c][2]}">${nm(C[q.c])}</span><span class="tg" style="background:${G[q.g][2]}">${nm(G[q.g])}</span><span class="tg" style="background:#555">${t('bm')} ${q.b}</span><span class="tg" style="background:#8a5a00">${tn(q.ty||'mcq',0)}</span>`}
-
-function render(){const o=$('out');if(ST){P&&P.show();return}if(!exam.length){o.innerHTML=`<p>${t('empty')}</p>`;return}
-let h=`<div class="row noprint"><button class="btn" id="stu">${t('stu')}</button><button class="btn alt" id="pr">${t('print')}</button><button class="btn alt" id="shr">${t('share')}</button><label class="o"><input type="checkbox" id="sk" ${showKey?'checked':''}> ${t('ans')}</label></div>`;
-h+='<div id="shbox"></div>';if(exam.short)h+=`<div class="note">${t('short')}</div>`;
-h+=`<h3>${t('content')}</h3>${bars(C,'c',()=>100)}<h3>${t('cog')}</h3>${bars(G,'g',()=>100)}<div class="${showKey?'show':''}">`;
-exam.forEach((q,i)=>{if(q.ty){h+=prevX(q,i);return}const op=nm(q.o);h+=`<div class="q"><div>${tags(q)}</div><p><b>${i+1}.</b> ${nm(q.q)}</p><ol type="${L=='ar'?'أ':'A'}">${op.map((x,j)=>`<li class="${showKey&&j==0?'ok':''}">${x}</li>`).join('')}</ol><div class="k"><b>${t('key')}:</b> ${op[0]}<br><b>${t('mis')}:</b> ${nm(q.m)} · ${nm(T[q.t].slice(1))}</div></div>`});
-o.innerHTML=h+'</div>';$('stu').onclick=()=>{TK='pv';play(exam)};$('shr').onclick=share;$('pr').onclick=()=>{showKey=true;render();print()};$('sk').onchange=e=>{showKey=e.target.checked;render()}}
-
-$('lang').onclick=()=>{L=L=='en'?'ar':'en';ui()};$('gen').onclick=build;$('guide').onclick=guide;$('resbtn').onclick=results;$('n').oninput=e=>$('nv').textContent=e.target.value;
 ui();
-</script></body></html>
+boot();
+addEventListener('hashchange', boot);
+</script>
+</body>
+</html>
