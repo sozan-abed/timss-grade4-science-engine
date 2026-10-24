@@ -1,376 +1,121 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>eTIMSS SciQuest 4</title>
 <style>
-:root{--bg:#f3f6f4;--sf:#fff;--tx:#14302b;--mu:#5b6f6a;--ln:#d5e0db;--pr:#0f6b5c;--L:#2e8b57;--P:#2f6fb5;--E:#b7791f;--K:#6b7fd7;--A:#0f6b5c;--R:#c2410c}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1b18;--sf:#162824;--tx:#e6f0ed;--mu:#9bb2ab;--ln:#2a423c;--pr:#4cc2aa}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif}
+:root{--bg:#f3f6f4;--sf:#ffffff;--tx:#14302b;--mu:#5b6f6a;--ln:#d5e0db;--pr:#0f6b5c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Segoe UI",Tahoma,Arial,sans-serif}
 header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;background:var(--pr);color:#fff;flex-wrap:wrap}
-header h1{margin:0;font-size:20px}header small{opacity:.85;display:block}
-button,select{font:inherit}.btn{background:var(--pr);color:#fff;border:0;border-radius:8px;padding:10px 16px;min-height:44px;cursor:pointer}
-.btn.alt{background:transparent;color:var(--pr);border:1.5px solid var(--pr)}header .btn{background:#fff;color:var(--pr)}
-.btn:focus-visible,input:focus-visible{outline:3px solid #f5b301;outline-offset:2px}
-main{display:grid;grid-template-columns:340px 1fr;gap:18px;padding:18px 20px;max-width:1200px;margin:auto}
+header h1{margin:0;font-size:20px}
+button{font:inherit}
+.btn{background:var(--pr);color:#fff;border:0;border-radius:8px;padding:10px 16px;min-height:44px;cursor:pointer;font-weight:600}
+.btn.alt{background:transparent;color:var(--pr);border:1.5px solid var(--pr)}
+header .btn{background:#fff;color:var(--pr)}
+main{display:grid;grid-template-columns:320px 1fr;gap:18px;padding:18px 20px;max-width:1200px;margin:auto}
 @media(max-width:860px){main{grid-template-columns:1fr}}
 .pn{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:16px}
-.pn h2{font-size:16px;margin:0 0 10px}.pn h3{font-size:14px;margin:14px 0 6px;color:var(--mu)}
+.pn h2{font-size:16px;margin:0 0 10px}
+.pn h3{font-size:14px;margin:14px 0 6px;color:var(--mu)}
 label.o{display:flex;gap:8px;align-items:center;padding:6px 0;min-height:36px;cursor:pointer}
-.grp{font-weight:600;margin-top:8px}.grp i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:6px}
-input[type=range]{width:100%}.big{font-size:28px;font-weight:700;color:var(--pr)}
-.bar{display:flex;height:26px;border-radius:6px;overflow:hidden;margin:4px 0;font-size:12px;color:#fff}.bar span{display:flex;align-items:center;justify-content:center;white-space:nowrap}
-.tg{font-size:12px;padding:2px 8px;border-radius:99px;color:#fff;display:inline-block;margin-inline-end:4px}
-.q{border:1px solid var(--ln);border-radius:10px;padding:12px;margin:10px 0}.q ol{margin:6px 0;padding-inline-start:22px}
-.q li.ok{font-weight:700;color:var(--pr)}.ans .k{display:none}.show .k{display:block}.k{font-size:14px;color:var(--mu);background:var(--bg);padding:6px 10px;border-radius:6px;margin-top:6px}
-.note{background:#fff4d6;color:#5a4300;padding:8px 12px;border-radius:8px;margin:8px 0;font-size:14px}
-.opt{display:block;width:100%;text-align:start;margin:6px 0;padding:12px;border:1.5px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--tx);cursor:pointer;min-height:48px}
-.opt.sel{border-color:var(--pr);background:var(--bg)}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.st #side,.st #guide,.st #resbtn{display:none}.st main{grid-template-columns:1fr}
-.chip{display:inline-block;margin:4px;padding:10px 14px;border:1.5px solid var(--ln);border-radius:20px;background:var(--sf);cursor:grab;min-height:44px}.chip.sel{border-color:var(--pr);background:var(--bg);box-shadow:0 0 0 2px var(--pr)}
-.zn{min-height:60px;border:2px dashed var(--ln);border-radius:10px;padding:6px;margin:6px 0}.zn b{font-size:13px;color:var(--mu)}
-svg [data-r]{cursor:pointer}svg [data-r]:hover{opacity:.7}.pk>*{stroke:#f5b301;stroke-width:4}
-textarea,input[type=text]{width:100%;padding:10px;font:inherit;border:1.5px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx)}
-.fb{padding:10px;border-radius:8px;margin:10px 0}.good{background:#dff3e6;color:#14532d}.bad{background:#fde2e0;color:#7f1d1d}
-@media print{header,#side,.noprint{display:none!important}main{display:block;padding:0}.k{display:block!important}.pn{border:0}}
+.grp{font-weight:700;margin-top:10px;color:var(--pr)}
+.big{font-size:26px;font-weight:700;color:var(--pr)}
+.tg{font-size:12px;padding:3px 8px;border-radius:99px;color:#fff;display:inline-block;margin-inline-end:4px}
+.q{border:1px solid var(--ln);border-radius:10px;padding:14px;margin:12px 0;background:var(--sf)}
+.q ol{margin:8px 0;padding-inline-start:22px}
+.q li.ok{font-weight:700;color:var(--pr)}
+.ans .k{display:none}
+.show .k{display:block}
+.k{font-size:14px;color:var(--mu);background:var(--bg);padding:8px 12px;border-radius:6px;margin-top:8px}
+.note{background:#fff4d6;color:#5a4300;padding:12px;border-radius:8px;margin:10px 0;font-size:14px}
+.opt{display:block;width:100%;text-align:start;margin:8px 0;padding:12px;border:1.5px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--tx);cursor:pointer;font-size:16px}
+.opt.sel{border-color:var(--pr);background:#eaf6ee;font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.st #side{display:none}
+.st main{grid-template-columns:1fr}
+.fb{padding:12px;border-radius:8px;margin:12px 0}
+.good{background:#dff3e6;color:#14532d}
+.bad{background:#fde2e0;color:#7f1d1d}
 </style>
 </head>
 <body>
+
 <header>
-  <div><h1 id="ttl">eTIMSS SciQuest 4</h1><small id="sub"></small></div>
+  <div>
+    <h1 id="ttl">eTIMSS SciQuest 4</h1>
+    <small id="sub">علوم الصف الرابع · منشئ اختبارات TIMSS</small>
+  </div>
   <div class="row">
-    <button class="btn" id="guide">Question types</button>
-    <button class="btn" id="lang">العربية</button>
+    <button class="btn" id="langBtn" onclick="toggleLang()">English</button>
   </div>
 </header>
+
 <main>
   <aside id="side" class="pn">
-    <h2 id="h_scope">1. Topics</h2>
+    <h2 id="h_scope">١. اختر المواضيع</h2>
     <div id="topics"></div>
-    <h3 id="h_len">2. Number of questions</h3>
+
+    <h3 id="h_len">٢. عدد الأسئلة</h3>
     <div class="big" id="nv">10</div>
-    <input type="range" id="n" min="5" max="25" value="10" aria-label="count">
-    <h3 id="h_skill">3. Cognitive Focus</h3>
-    <div id="skills"></div>
-    <p style="margin-top:16px"><button class="btn" id="gen" style="width:100%">Build exam</button></p>
+    <input type="range" id="n" min="5" max="25" value="10" oninput="document.getElementById('nv').textContent=this.value" style="width:100%">
+
+    <p style="margin-top:20px">
+      <button class="btn" id="genBtn" onclick="buildExam()" style="width:100%;font-size:16px">إنشاء الاختبار</button>
+    </p>
   </aside>
-  <section id="out" class="pn"></section>
+
+  <section id="out" class="pn">
+    <!-- Exam / Question Area -->
+  </section>
 </main>
 
 <script>
-const T={
-  body:['L','Body: bones, muscles, organs','الجسم: العظام والعضلات والأعضاء'],
-  plants:['L','Plants & life cycles','النباتات ودورات الحياة'],
-  her:['L','Heredity & adaptation','الوراثة والتكيف'],
-  eco:['L','Ecosystems & food chains','النظم البيئية والسلاسل الغذائية'],
-  mat:['P','Matter & dissolving','المادة والذوبان'],
-  mix:['P','Separating mixtures','فصل المخاليط'],
-  frc:['P','Forces & simple machines','القوى والآلات البسيطة'],
-  nrg:['P','Energy, light & circuits','الطاقة والضوء والدوائر'],
-  str:['E','Earth structure & fossils','تركيب الأرض والحفريات'],
-  wea:['E','Water, weather & climate','الماء والطقس والمناخ'],
-  sol:['E','Solar system','النظام الشمسي'],
-  res:['E','Resources','موارد الأرض']
-};
-const C={L:['Life Science','علوم الحياة','var(--L)',45],P:['Physical Science','العلوم الفيزيائية','var(--P)',35],E:['Earth Science','علوم الأرض','var(--E)',20]};
-const G={K:['Knowing','المعرفة','var(--K)',40],A:['Applying','التطبيق','var(--A)',40],R:['Reasoning','الاستدلال','var(--R)',20]};
+let L = 'ar';
+let ST = false;
+let exam = [];
+let showKey = false;
+let P = null;
 
-const B=[
-['body','K',400,'Which bones protect the brain?|أي العظام تحمي الدماغ؟','Skull;Rib cage;Spine;Arm bones|الجمجمة;القفص الصدري;العمود الفقري;عظام الذراع','Confuses the skull with the rib cage|يخلط بين الجمجمة والقفص الصدري'],
-['body','K',475,'Which organ pumps blood around the body?|أي عضو يضخ الدم في الجسم؟','Heart;Lungs;Stomach;Brain|القلب;الرئتان;المعدة;الدماغ','Lungs pump because they move|يظن أن الرئتين تضخان الدم'],
-['plants','K',400,'Which plant part takes in water from the soil?|أي جزء في النبات يمتص الماء من التربة؟','Roots;Leaves;Flower;Stem|الجذور;الأوراق;الزهرة;الساق','Thinks leaves drink water like mouths|يظن أن الأوراق تشرب الماء'],
-['plants','K',475,'Which stage comes right after germination?|أي مرحلة تأتي مباشرة بعد الإنبات؟','Seedling growth;Pollination;Seed dispersal;Fruit forming|نمو الشتلة;التلقيح;انتشار البذور;تكوّن الثمرة','Mixes up the order of the life cycle|يخلط ترتيب مراحل دورة الحياة'],
-['plants','A',475,'A seed has fluffy hairs like a parachute. How is it dispersed?|لبذرة شعيرات خفيفة كالمظلة. كيف تنتشر؟','By wind;By water;On animal fur;By exploding|بالرياح;بالماء;على فرو الحيوان;بالانفجار','Ignores structure–function link|يهمل العلاقة بين التركيب والوظيفة'],
-['her','K',475,'Which trait is inherited?|أي صفة تُورَّث؟','Eye colour;A scar;A haircut;A broken branch|لون العينين;ندبة;قصّة شعر;غصن مكسور','Thinks any body change can be passed|يظن أن أي تغيّر في الجسم ينتقل'],
-['her','A',475,'A dog loses its tail in an accident. What are its puppies like?|فقد كلب ذيله في حادث. كيف سيكون صغاره؟','Born with normal tails;Born with no tails;Born with short tails;Lose tails later|يولدون بذيول عادية;بلا ذيول;بذيول قصيرة;يفقدون ذيولهم لاحقًا','Believes acquired changes are inherited|يظن أن التغيرات المكتسبة تورَّث'],
-['body','A',550,'You bend your arm. What does the biceps do?|تثني ذراعك. ماذا تفعل العضلة ذات الرأسين؟','Contracts and pulls the bone;Relaxes and pushes;Stays the same;Turns into bone|تنقبض وتشد العظم;ترتخي وتدفع;لا تتغير;تتحول إلى عظم','Thinks muscles can push bones|يظن أن العضلات تدفع العظام'],
-['eco','A',475,'Grass → grasshopper → frog → snake. Which is the primary consumer?|عشب ← جندب ← ضفدع ← ثعبان. من المستهلك الأول؟','Grasshopper;Grass;Frog;Snake|الجندب;العشب;الضفدع;الثعبان','Calls the plant a consumer|يعدّ النبات مستهلكًا'],
-['eco','A',550,'In that chain, frogs disappear. What happens to grasshoppers first?|في السلسلة نفسها اختفت الضفادع. ماذا يحدث للجندب أولًا؟','Their number increases;Their number decreases;No change;They disappear|يزداد عددها;يقل عددها;لا تتغير;تختفي','Thinks removing a predator harms its prey|يظن أن اختفاء المفترس يضر بالفريسة'],
-['eco','R',550,'Sara tests if light affects plant growth. What must stay the same?|تختبر سارة أثر الضوء في نمو النبات. ما الذي يجب أن يبقى ثابتًا؟','Amount of water;Amount of light;Final height;Nothing|كمية الماء;كمية الضوء;الطول النهائي;لا شيء','Cannot isolate one variable (fair test)|لا يعزل متغيرًا واحدًا'],
-['eco','R',625,'Lizards and birds eat the same insects, then insects become scarce. Best prediction?|السحالي والطيور تأكل الحشرات نفسها ثم قلّت الحشرات. ما أفضل توقع؟','Competition increases and both numbers may fall;Both grow;Only insects grow;Nothing changes|تزداد المنافسة وقد يقل عددهما;يزداد عددهما;تزداد الحشرات فقط;لا شيء يتغير','Misses competition for limited food|يغفل التنافس على الغذاء'],
-['mat','K',400,'Which change is irreversible?|أي تغيّر لا يمكن عكسه؟','Burning wood;Melting ice;Boiling water;Freezing juice|حرق الخشب;انصهار الثلج;غليان الماء;تجمّد العصير','Thinks all changes can be reversed|يظن أن كل التغيرات تُعكس'],
-['mat','A',475,'Where does sugar dissolve fastest?|أين يذوب السكر أسرع؟','Hot water, stirred;Cold water, stirred;Hot water, not stirred;Cold water, not stirred|ماء ساخن مع التحريك;ماء بارد مع التحريك;ماء ساخن دون تحريك;ماء بارد دون تحريك','Considers only one factor|ينتبه لعامل واحد فقط'],
-['mat','R',625,'Time to dissolve: 20°C = 60 s, 40°C = 35 s, 60°C = 20 s. Best conclusion?|زمن الذوبان: ٢٠°م = ٦٠ ث، ٤٠°م = ٣٥ ث، ٦٠°م = ٢٠ ث. ما أفضل استنتاج؟','Higher temperature dissolves faster;Temperature has no effect;Colder is faster;Sugar disappears|الحرارة الأعلى تذيب أسرع;لا أثر للحرارة;الأبرد أسرع;السكر يختفي','Cannot read a trend from data|لا يستخلص اتجاهًا من البيانات'],
-['mix','K',400,'Which tool separates iron nails from sand?|أي أداة تفصل مسامير الحديد عن الرمل؟','Magnet;Filter paper;Heat;Spoon|مغناطيس;ورق ترشيح;حرارة;ملعقة','Chooses filter for every mixture|يختار الترشيح لكل مخلوط'],
-['mix','A',475,'Salt is dissolved in water. How can you get the salt back?|الملح مذاب في الماء. كيف تستعيده؟','Evaporation;Sieving;Magnet;Hand sorting|التبخير;النخل;المغناطيس;الفرز اليدوي','Believes a sieve can catch dissolved salt|يظن أن المنخل يحجز المذاب'],
-['mix','A',550,'A mix has gravel, sand and iron filings. What is the best order?|مخلوط من حصى ورمل وبرادة حديد. ما أفضل ترتيب؟','Magnet, then sieve;Sieve, then evaporate;Filter, then magnet;Add water only|المغناطيس ثم المنخل;المنخل ثم التبخير;الترشيح ثم المغناطيس;إضافة الماء فقط','Cannot plan multi-step separation|لا يخطط لفصل متعدد الخطوات'],
-['frc','K',400,'A seesaw is an example of which simple machine?|الأرجوحة المتوازنة مثال على أي آلة بسيطة؟','Lever;Pulley;Gear;Ramp|الرافعة;البكرة;الترس;المستوى المائل','Confuses lever and pulley|يخلط بين الرافعة والبكرة'],
-['frc','A',475,'A longer ramp is used to lift a box. The pushing force is…|يُستخدم منحدر أطول لرفع صندوق. قوة الدفع…','Smaller;Larger;The same;Zero|أصغر;أكبر;نفسها;صفر','Thinks machines remove effort completely|يظن أن الآلة تلغي الجهد تمامًا'],
-['nrg','K',475,'Which material is the best thermal insulator?|أي مادة أفضل عازل حراري؟','Plastic;Copper;Iron;Aluminium|البلاستيك;النحاس;الحديد;الألمنيوم','Thinks metals keep heat in|يظن أن الفلزات تحفظ الحرارة'],
-['nrg','A',550,'A second cell is added to a simple circuit. The bulb becomes…|أُضيفت خلية ثانية لدائرة بسيطة. يصبح المصباح…','Brighter;Dimmer;Off;The same|أكثر سطوعًا;أقل سطوعًا;مطفأً;كما هو','Believes cells share energy and dim|يظن أن الخلايا تتقاسم الطاقة فتخفت'],
-['nrg','R',550,'A bulb will not light. Which test best shows the bulb is broken?|لا يضيء مصباح. أي اختبار يثبت أن المصباح تالف؟','Put a working bulb in the same circuit;Add more wire;Turn off the room light;Swap the switch colour|وضع مصباح سليم في الدائرة نفسها;إضافة أسلاك;إطفاء ضوء الغرفة;تغيير لون المفتاح','Changes several things at once|يغيّر أكثر من شيء معًا'],
-['str','K',400,'Which layer of Earth is the hottest?|أي طبقات الأرض أسخن؟','Inner core;Crust;Mantle;Outer core|اللب الداخلي;القشرة;الستار;اللب الخارجي','Thinks the surface is hottest|يظن أن السطح الأسخن'],
-['str','A',475,'A seashell fossil is found on a high mountain. What does this suggest?|عُثر على حفرية صدفة على جبل عالٍ. ماذا يدل ذلك؟','The place was once under the sea;Shells can climb;People left it;Wind made it|المكان كان تحت البحر;الأصداف تتسلق;تركها الناس;صنعتها الرياح','Cannot infer past environments|لا يستنتج البيئات القديمة'],
-['wea','A',475,'Today is very hot. Does this mean the climate is hot?|اليوم شديد الحر. هل يعني ذلك أن المناخ حار؟','No, climate is the long-term pattern;Yes, always;Only at night;Climate is today\'s weather|لا، المناخ نمط طويل المدى;نعم دائمًا;ليلًا فقط;المناخ هو طقس اليوم','Confuses weather with climate|يخلط بين الطقس والمناخ'],
-['sol','K',400,'What causes day and night?|ما سبب تعاقب الليل والنهار؟','Earth rotating on its axis;Earth orbiting the Sun;Moon orbiting Earth;Sun moving|دوران الأرض حول محورها;دوران الأرض حول الشمس;دوران القمر حول الأرض;حركة الشمس','Confuses rotation with revolution|يخلط بين الدوران والدوران حول الشمس'],
-['sol','R',550,'Mona says the Moon makes its own light. Which evidence shows she is wrong?|تقول منى إن القمر يصدر ضوءه. أي دليل يبيّن خطأها؟','Its lit part changes as it orbits;It is round;It is far;It is white|الجزء المضاء يتغير أثناء دورانه;شكله دائري;بعيد;أبيض','Thinks Moon is a light source|يظن أن القمر مصدر ضوء'],
-['res','K',475,'Which resource is renewable?|أي مورد متجدد؟','Wind;Coal;Oil;Natural gas|الرياح;الفحم;النفط;الغاز الطبيعي','Thinks all fuels renew|يظن أن كل أنواع الوقود تتجدد'],
-['res','R',625,'A town can use coal or solar panels. Which is the best choice and why?|بلدة تختار بين الفحم والألواح الشمسية. ما أفضل خيار ولماذا؟','Solar: renewable and does not run out;Coal: cheaper today;Coal: lasts forever;Neither|الشمسية: متجددة ولا تنفد;الفحم: أرخص اليوم;الفحم: يدوم للأبد;لا هذا ولا ذاك','Ignores long-term sustainability|يغفل الاستدامة طويلة المدى']
-].map((r,i)=>{
-  const s=x=>x.split('|').map(y=>y.split(';'));
-  return {id:i, t:r[0], c:T[r[0]][0], g:r[1], b:r[2], q:r[3].split('|'), o:s(r[4]), m:r[5].split('|'), ty:'mcq'};
-});
-
-const S={
-  en:{ttl:'eTIMSS SciQuest 4',sub:'Grade 4 Science · TIMSS Exam Builder',lang:'العربية',scope:'1. Select Topics',len:'2. Number of questions',skill:'3. Cognitive Focus',gen:'Build Exam',bal:'Balanced TIMSS (40/40/20)',sel:'Select all',empty:'Select topics on the left and click "Build Exam".',key:'Answer',mis:'Misconception',stu:'Start Student Quiz',share:'Share Link with Students',copy:'Copy Link',ans:'Show Answer Key',q:'Question',fin:'Finish',next:'Next',check:'Check Answer',score:'Score',again:'Try Again',hint:'Tap to select your answer:'},
-  ar:{ttl:'eTIMSS SciQuest 4',sub:'علوم الصف الرابع · منشئ اختبارات TIMSS',lang:'English',scope:'١. اختر المواضيع',len:'٢. عدد الأسئلة',skill:'٣. التركيز الإدراكي',gen:'إنشاء الاختبار',bal:'متوازن حسب TIMSS (٤٠ / ٤٠ / ٢٠)',sel:'تحديد الكل',empty:'اختر المواضيع من القائمة واضغط "إنشاء الاختبار".',key:'الإجابة',mis:'التصور الخاطئ الشائع',stu:'بدء وضع الاختبار للطالب',share:'مشاركة الرابط مع الطلبة',copy:'نسخ الرابط',ans:'إظهار الإجابات النموذجية',q:'سؤال',fin:'إنهاء',next:'التالي',check:'تحقق من الإجابة',score:'النتيجة',again:'إعادة المحاولة',hint:'اضغط لاختيار الإجابة الصحيحة:'}
+const T = {
+  body: ['L', 'Body: bones, muscles, organs', 'الجسم: العظام والعضلات والأعضاء'],
+  plants: ['L', 'Plants & life cycles', 'النباتات ودورات الحياة'],
+  her: ['L', 'Heredity & adaptation', 'الوراثة والتكيف'],
+  eco: ['L', 'Ecosystems & food chains', 'النظم البيئية والسلاسل الغذائية'],
+  mat: ['P', 'Matter & dissolving', 'المادة والذوبان'],
+  mix: ['P', 'Separating mixtures', 'فصل المخاليط'],
+  frc: ['P', 'Forces & simple machines', 'القوى والآلات البسيطة'],
+  nrg: ['P', 'Energy & circuits', 'الطاقة والدوائر الكهربائية'],
+  str: ['E', 'Earth structure & fossils', 'تركيب الأرض والحفريات'],
+  wea: ['E', 'Weather & climate', 'الطقس والمناخ'],
+  sol: ['E', 'Solar system', 'النظام الشمسي'],
+  res: ['E', 'Earth resources', 'موارد الأرض']
 };
 
-let L='ar', exam=[], showKey=false, P=null, ST=false, TK='pv';
-const $=id=>document.getElementById(id), t=k=>S[L][k]||k, nm=(o,i)=>o[i===undefined?(L=='en'?0:1):i];
+const C = {
+  L: ['Life Science', 'علوم الحياة', '#2e8b57'],
+  P: ['Physical Science', 'العلوم الفيزيائية', '#2f6fb5'],
+  E: ['Earth Science', 'علوم الأرض', '#b7791f']
+};
 
-function shuffle(a){
-  a=[...a];
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
+const G = {
+  K: ['Knowing', 'المعرفة', '#6b7fd7'],
+  A: ['Applying', 'التطبيق', '#0f6b5c'],
+  R: ['Reasoning', 'الاستدلال', '#c2410c']
+};
 
-function tags(q){
-  return `<span class="tg" style="background:${C[q.c][2]}">${nm(C[q.c])}</span>
-          <span class="tg" style="background:${G[q.g][2]}">${nm(G[q.g])}</span>
-          <span class="tg" style="background:#555">Benchmark: ${q.b}</span>`;
-}
-
-function ui(){
-  document.documentElement.lang=L;
-  document.documentElement.dir=L=='ar'?'rtl':'ltr';
-  $('ttl').textContent=t('ttl');$('sub').textContent=t('sub');
-  $('lang').textContent=t('lang');$('h_scope').textContent=t('scope');
-  $('h_len').textContent=t('len');$('h_skill').textContent=t('skill');
-  $('gen').textContent=t('gen');
-
-  let h=`<label class="o"><input type="checkbox" id="all" checked> <b>${t('sel')}</b></label>`;
-  for(const c in C){
-    h+=`<div class="grp"><i style="background:${C[c][2]}"></i>${nm(C[c])}</div>`;
-    for(const k in T) if(T[k][0]==c){
-      h+=`<label class="o"><input type="checkbox" data-t="${k}" checked> ${nm(T[k].slice(1))}</label>`;
-    }
-  }
-  $('topics').innerHTML=h;
-  $('all').onchange=e=>document.querySelectorAll('[data-t]').forEach(x=>x.checked=e.target.checked);
-
-  $('skills').innerHTML=`
-    <label class="o"><input type="radio" name="sk" value="bal" checked> ${t('bal')}</label>
-    <label class="o"><input type="radio" name="sk" value="K"> ${nm(G.K)} (Knowing)</label>
-    <label class="o"><input type="radio" name="sk" value="A"> ${nm(G.A)} (Applying)</label>
-    <label class="o"><input type="radio" name="sk" value="R"> ${nm(G.R)} (Reasoning)</label>
-  `;
-
-  render();
-}
-
-function build(){
-  const sel=[...document.querySelectorAll('[data-t]:checked')].map(x=>x.dataset.t);
-  if(!sel.length){
-    alert(L=='ar'?'يرجى اختيار موضوع واحد على الأقل':'Please select at least one topic');
-    return;
-  }
-  const n = parseInt($('n').value) || 10;
-  const pool = B.filter(q => sel.includes(q.t));
-  
-  if(!pool.length){
-    alert(L=='ar'?'لا توجد أسئلة متوفرة للمواضيع المختارة':'No questions available for selected topics');
-    return;
-  }
-
-  const sk = document.querySelector('input[name=sk]:checked')?.value || 'bal';
-  let chosen = [];
-  
-  if(sk === 'bal'){
-    chosen = shuffle(pool).slice(0, n);
-  } else {
-    const focusItems = shuffle(pool.filter(q => q.g === sk));
-    const otherItems = shuffle(pool.filter(q => q.g !== sk));
-    chosen = [...focusItems, ...otherItems].slice(0, n);
-  }
-
-  exam = chosen;
-  render();
-}
-
-function render(){
-  const o=$('out');
-  if(ST){
-    if(P && P.show) P.show();
-    return;
-  }
-  if(!exam.length){
-    o.innerHTML=`<div class="note">${t('empty')}</div>`;
-    return;
-  }
-
-  let h=`<div class="row noprint">
-    <button class="btn" id="stu">${t('stu')}</button>
-    <button class="btn alt" id="shr">${t('share')}</button>
-    <label class="o"><input type="checkbox" id="sk" ${showKey?'checked':''}> ${t('ans')}</label>
-  </div>
-  <div id="shbox"></div>
-  <div class="${showKey?'show':''}">`;
-
-  exam.forEach((q,i)=>{
-    const op = nm(q.o);
-    h+=`<div class="q">
-      <div>${tags(q)}</div>
-      <p style="font-size:17px;font-weight:600;margin:8px 0">${i+1}. ${nm(q.q)}</p>
-      <ol type="${L=='ar'?'أ':'A'}">
-        ${op.map((x,j)=>`<li class="${showKey&&j==0?'ok':''}">${x}</li>`).join('')}
-      </ol>
-      <div class="k">
-        <b>${t('key')}:</b> ${op[0]}<br>
-        <b>${t('mis')}:</b> ${nm(q.m)}
-      </div>
-    </div>`;
-  });
-
-  o.innerHTML=h+'</div>';
-
-  $('stu').onclick=()=>{ TK='pv'; play(exam); };
-  $('shr').onclick=share;
-  $('sk').onchange=e=>{ showKey=e.target.checked; render(); };
-}
-
-function share(){
-  const tk = (L=='ar'?'a':'e') + '-' + exam.map(q=>q.id.toString(36)).join('.');
-  const base = window.location.href.split('#')[0];
-  const url = base + '#' + tk;
-  $('shbox').innerHTML=`
-    <div class="note" style="background:#eaf2ee;color:#14532d;border:1px solid var(--ln);padding:14px;border-radius:10px;margin-top:10px">
-      <b>${L=='ar'?'رابط الاختبار للطلبة (يفتح مباشرة بدون تسجيل دخول):':'Direct Student Exam Link (No sign-in required):'}</b>
-      <input type="text" readonly id="lk" value="${url}" onclick="this.select()" style="margin:8px 0;font-weight:bold">
-      <div style="display:flex;gap:8px">
-        <button class="btn" id="cp">${t('copy')}</button>
-        <a class="btn alt" style="text-decoration:none;display:inline-flex;align-items:center" href="https://api.whatsapp.com/send?text=${encodeURIComponent(url)}" target="_blank">WhatsApp</a>
-      </div>
-    </div>
-  `;
-  $('cp').onclick=()=>{
-    navigator.clipboard.writeText(url);
-    alert(L=='ar'?'تم نسخ الرابط!':'Link copied to clipboard!');
-  };
-}
-
-function play(src){
-  P={src, list: shuffle(src).map(q=>({q, p: shuffle([0,1,2,3]), a: null})), i:0, sc:[]};
-  intro();
-}
-
-function intro(){
-  $('out').innerHTML=`
-    <h2>${nm(P.src[0].q).length ? t('ttl') : ''}</h2>
-    <p style="font-size:18px">${L=='ar'?'عدد أسئلة الاختبار:':'Total questions:'} <b>${P.src.length}</b></p>
-    <p><button class="btn" id="startBtn" style="font-size:18px;padding:12px 24px">${L=='ar'?'ابدأ الاختبار الآن':'Start Quiz Now'}</button></p>
-  `;
-  $('startBtn').onclick=()=>{ showQ(); };
-}
-
-function showQ(){
-  const e = P.list[P.i];
-  const q = e.q;
-  const isLast = P.i === P.list.length - 1;
-
-  $('out').innerHTML=`
-    <div>${tags(q)}</div>
-    <p style="font-size:15px;color:var(--mu);margin-top:6px">${t('q')} ${P.i+1} / ${P.list.length}</p>
-    <p style="font-size:19px;font-weight:bold;margin:10px 0">${nm(q.q)}</p>
-    <div id="opts">
-      ${e.p.map(j => `
-        <button class="opt ${e.a === j ? 'sel':''}" data-j="${j}" ${e.done ? 'disabled':''}>
-          ${nm(q.o)[j]}
-        </button>
-      `).join('')}
-    </div>
-    <div id="fb"></div>
-    <div style="margin-top:16px">
-      <button class="btn" id="ckBtn" ${e.a === null ? 'disabled':''}>
-        ${e.done ? (isLast ? t('fin') : t('next')) : t('check')}
-      </button>
-    </div>
-  `;
-
-  document.querySelectorAll('.opt').forEach(btn => {
-    btn.onclick = () => {
-      if(e.done) return;
-      document.querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
-      btn.classList.add('sel');
-      e.a = parseInt(btn.dataset.j);
-      $('ckBtn').disabled = false;
-    };
-  });
-
-  if(e.done){
-    showFeedback(e);
-  }
-
-  $('ckBtn').onclick = () => {
-    if(!e.done){
-      e.done = true;
-      e.isCorrect = (e.a === 0); // 0 is always the correct option in B bank
-      P.sc.push(e.isCorrect ? 1 : 0);
-      showQ();
-    } else {
-      if(isLast){
-        showResult();
-      } else {
-        P.i++;
-        showQ();
-      }
-    }
-  };
-}
-
-function showFeedback(e){
-  const isRight = e.isCorrect;
-  $('fb').innerHTML=`
-    <div class="fb ${isRight ? 'good' : 'bad'}">
-      <b>${isRight ? (L=='ar'?'إجابة صحيحة وممتازة!':'Correct answer!') : (L=='ar'?'إجابة غير صحيحة':'Not quite right.')}</b><br>
-      ${!isRight ? `<b>${t('key')}:</b> ${nm(e.q.o)[0]}<br><b>${t('mis')}:</b> ${nm(e.q.m)}` : ''}
-    </div>
-  `;
-}
-
-function showResult(){
-  const score = P.sc.reduce((a,b)=>a+b, 0);
-  const pct = Math.round((score / P.sc.length) * 100);
-  
-  $('out').innerHTML=`
-    <h2>${L=='ar'?'نتيجة الاختبار':'Quiz Results'}</h2>
-    <div class="big" style="font-size:42px;margin:12px 0">${pct}%</div>
-    <p style="font-size:18px">${L=='ar'?'أجبت بشكل صحيح على:':'Score:'} <b>${score}</b> ${L=='ar'?'من':'out of'} <b>${P.sc.length}</b></p>
-    <div class="note" style="${pct >= 70 ? 'background:#dff3e6;color:#14532d' : ''}">
-      ${pct >= 70 ? (L=='ar'?'مستوى ممتاز ومتمكن جدًا!':'Excellent mastery of the material!') : (L=='ar'?'تحتاج إلى مراجعة بعض المفاهيم العلمية':'Good effort! Practice more on the missed concepts.')}
-    </div>
-    <p style="margin-top:20px">
-      <button class="btn" onclick="play(P.src)">${t('again')}</button>
-      ${!ST ? `<button class="btn alt" onclick="render()" style="margin-inline-start:8px">${L=='ar'?'العودة':'Back'}</button>` : ''}
-    </p>
-  `;
-}
-
-function boot(){
-  const h=location.hash.slice(1);
-  if(!/^[ea]-/.test(h)) return;
-  const ids = h.slice(2).split('.').map(y=>parseInt(y,36)).filter(n=>!isNaN(n));
-  const src = ids.map(id => B.find(item => item.id === id)).filter(Boolean);
-  if(!src.length) return;
-
-  L = h[0] === 'a' ? 'ar' : 'en';
-  ST = true;
-  document.body.classList.add('st');
-  ui();
-  play(src);
-}
-
-$('lang').onclick=()=>{ L = (L=='en'?'ar':'en'); ui(); };
-$('gen').onclick=build;
-$('n').oninput=e=>$('nv').textContent=e.target.value;
-
-ui();
-boot();
-addEventListener('hashchange', boot);
-</script>
-</body>
-</html>
+const RAW_B = [
+  ['body','K',400,'Which bones protect the brain?|أي العظام تحمي الدماغ؟','Skull;Rib cage;Spine;Arm bones|الجمجمة;القفص الصدري;العمود الفقري;عظام الذراع','Confuses skull with rib cage|يخلط بين الجمجمة والقفص الصدري'],
+  ['body','K',475,'Which organ pumps blood around the body?|أي عضو يضخ الدم في الجسم؟','Heart;Lungs;Stomach;Brain|القلب;الرئتان;المعدة;الدماغ','Lungs pump blood|يظن أن الرئتين تضخان الدم'],
+  ['plants','K',400,'Which plant part takes in water from the soil?|أي جزء في النبات يمتص الماء من التربة؟','Roots;Leaves;Flower;Stem|الجذور;الأوراق;الزهرة;الساق','Leaves take water|يظن أن الأوراق تمتص الماء'],
+  ['plants','K',475,'Which stage comes right after germination?|أي مرحلة تأتي مباشرة بعد الإنبات؟','Seedling growth;Pollination;Seed dispersal;Fruit forming|نمو الشتلة;التلقيح;انتشار البذور;تكوّن الثمرة','Mixes order|يخلط في الترتيب'],
+  ['plants','A',475,'A seed has fluffy hairs like a parachute. How is it dispersed?|لبذرة شعيرات خفيفة كالمظلة. كيف تنتشر؟','By wind;By water;On animal fur;By exploding|بالرياح;بالماء;على فرو الحيوان;بالانفجار','Ignores structure|يهمل التركيب'],
+  ['her','K',475,'Which trait is inherited?|أي صفة تُورَّث؟','Eye colour;A scar;A haircut;A broken branch|لون العينين;ندبة;قصّة شعر;غصن مكسور','Acquired traits inherited|يظن أن الصفات المكتسبة تورث'],
+  ['her','A',475,'A dog loses its tail in an accident. What are its puppies like?|فقد كلب ذيله في حادث. كيف سيكون صغاره؟','Born with normal tails;Born with no tails;Born with short tails;Lose tails later|يولدون بذيول عادية;بلا ذيول;بذيول قصيرة;يفقدون ذيولهم لاحقًا','Acquired changes inherited|يظن أن التغيرات العارضة تورث'],
+  ['body','A',550,'You bend your arm. What does the biceps do?|تثني ذراعك. ماذا تفعل العضلة ذات الرأسين؟','Contracts and pulls the bone;Relaxes and pushes;Stays the same;Turns into bone|تنقبض وتشد العظم;ترتخي وتدفع;لا تتغير;تتحول إلى عظم','Muscles push bones|يظن أن العضلات تدفع العظام'],
+  ['eco','A',475,'Grass → grasshopper → frog → snake. Which is the primary consumer?|عشب ← جندب ← ضفدع ← ثعبان. من المستهلك الأول؟','Grasshopper;Grass;Frog;Snake|الجندب;العشب;الضفدع;الثعبان','Plants are consumers|يعد النبات مستهلكًا'],
+  ['eco','A',550,'In that chain, frogs disappear. What happens to grasshoppers first?|في السلسلة السابقة اختفت الضفادع. ماذا يحدث للجندب أولًا؟','Their number increases;Their number decreases;No change;They disappear|يزداد عددها;يقل عددها;لا تتغير;تختفي','Predator removal harms prey|يظن أن زوال المفترس يضر بالفريسة'],
+  ['eco','R',550,'Sara tests if light affects plant growth. What must stay the same?|تختبر سارة أثر الضوء في نمو النبات. ما الذي يجب أن يبقى ثابتًا؟','Amount of water;Amount of light;Final height;Nothing|كمية الماء;كمية الضوء;الطول النهائي;لا شيء','Fair test variable|لا يعزل المتغيرات'],
+  ['mat','K',400,'Which change is irreversible?|أي تغيّر لا يمكن عكسه؟','Burning wood;Melting ice;Boiling water;Freezing juice|حرق الخشب;انصهار الثلج;غليان الماء;تجمّد العصير','All changes reversible|يظن كل التغيرات قابلة للعكس'],
+  ['mat','A',475,'Where does sugar dissolve fastest?|أين يذوب السكر أسرع؟','Hot water, stirred;Cold water, stirred;Hot water, not stirred;Cold water, not stirred|ماء ساخن مع التحريك;ماء بارد مع التحريك;ماء ساخن دون تحريك;ماء بارد دون تحريك','Single factor|ينتبه لعامل واحد'],
